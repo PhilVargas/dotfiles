@@ -1,0 +1,21 @@
+[include]
+  path = ~/.gitconfig.secret
+[core]
+  excludesfile = /Users/phil.vargas/.gitignore_global
+  editor = vim
+[push]
+  default = simple
+[pull]
+  rebase = true
+[color]
+  ui            = true
+[alias]
+  ap       = add --patch
+  cm       = !sh -c 'git commit -m \"$*\"' -
+  co       = !sh -c 'git checkout $1' -
+  rel      = !sh -c 'git fetch origin && git checkout -b release/$(date +%Y.%m.%d.%H%m) origin/develop'
+  qa       = !sh -c 'git fetch origin $1:$1 && git checkout $1' -
+  nf       = !sh -c 'git checkout -b feature/TRAV-$1' - 
+  nb       = !sh -c 'git checkout -b bugfix/TRAV-$1' -
+  cob      = !sh -c 'git checkout bugfix/TRAV-$1' - 
+  cof      = !sh -c 'git checkout feature/TRAV-$1' -
