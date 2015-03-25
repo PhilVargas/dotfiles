@@ -44,6 +44,7 @@ Plugin 'xolox/vim-notes'
 Plugin 'christoomey/vim-tmux-navigator'
 
 "" Efficieny
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'chriskempson/base16-vim'
 

@@ -1,7 +1,6 @@
 " General settings "
-
 set grepprg=ag
-
+set shell=bash\ --login
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vundle Stuff
@@ -283,7 +282,7 @@ function! NumberToggle()
 endfunction
 
 " Toggle numbering style with ctrl+m
-nnoremap <silent><Leader>m :call NumberToggle()<CR>"" Test
+nnoremap <silent><Leader>m :call NumberToggle()<CR>
 
 "" COLORS
 syntax on

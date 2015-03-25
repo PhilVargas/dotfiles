@@ -17,7 +17,7 @@ export PS1="$YELLOW\u $RED\W$GREEN \$(parse_git_branch)$DEFAULT\$ "
 # Load git completions
 git_completion_script=/usr/local/etc/bash_completion.d/git-completion.bash
 test -s $git_completion_script && source $git_completion_script
-__git_complete go _git_checkout
+__git_complete g _git_checkout
 
 # Colors ls should use for folders, files, symlinks etc, see `man ls` and
 # search for LSCOLORS
@@ -41,6 +41,8 @@ alias dssolr='bundle exec sunspot-solr start -- -d solr/data/development/ -p sol
 alias sproc="ps aux | grep $1"
 alias bash_profile='vim ~/.bash_profile'
 alias gitconfig='vim ~/.gitconfig'
+alias vimrc='vim ~/.vimrc'
+alias vundles='vim ~/.vimrc.bundles'
 
 # Force ls to use colors (G) and use humanized file sizes (h)
 alias ls='ls -Gh'
