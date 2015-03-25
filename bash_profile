@@ -24,7 +24,8 @@ __git_complete g _git_checkout
 export LSCOLORS=ExGxFxdxCxDxDxaccxaeex
 
 export PATH="/usr/local/bin:$PATH"
-export PATH="/Users/phil.vargas/.bin:$PATH"
+export PATH="/Users/philipavargas/.bin:$PATH"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export LFFS=~/Desktop/Farespotter
 export LDAPUSERNAME=pvargas
@@ -34,20 +35,20 @@ alias vim='rvm system do /usr/local/bin/vim $@'
 alias sandbox='rails console --sandbox'
 alias brails='bundle exec rails'
 alias brspec='bundle exec rspec'
-alias load-lffs-images="rsync -r $LDAPUSERNAME@www01.lffs.prod:/home/travel/apps/FarespotterNet/shared/images/ $LFFS/public/images/r/"
-alias deploy="ssh $LDAPUSERNAME@deploy01.tools.ops"
 alias reload='exec $SHELL -l'
-alias dssolr='bundle exec sunspot-solr start -- -d solr/data/development/ -p solr/'
 alias sproc="ps aux | grep $1"
 alias bash_profile='vim ~/.bash_profile'
 alias gitconfig='vim ~/.gitconfig'
 alias vimrc='vim ~/.vimrc'
 alias vundles='vim ~/.vimrc.bundles'
 
+# LFFS Aliases
+alias load-lffs-images="rsync -r $LDAPUSERNAME@www01.lffs.prod:/home/travel/apps/FarespotterNet/shared/images/ $LFFS/public/images/r/"
+alias deploy="ssh $LDAPUSERNAME@deploy01.tools.ops"
+alias dssolr='bundle exec sunspot-solr start -- -d solr/data/development/ -p solr/'
+
 # Force ls to use colors (G) and use humanized file sizes (h)
 alias ls='ls -Gh'
 alias vundle="vim +PluginInstall +PluginClean +qall!"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
