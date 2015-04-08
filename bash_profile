@@ -34,6 +34,7 @@ alias brspec='bundle exec rspec'
 alias reload='exec $SHELL -l'
 alias sproc="ps aux | grep $1"
 alias bash_profile='vim ~/.bash_profile'
+alias gitignore_global='vim ~/.gitignore_global'
 alias gitconfig='vim ~/.gitconfig'
 alias vimrc='vim ~/.vimrc'
 alias vundles='vim ~/.vimrc.bundles'
@@ -50,3 +51,6 @@ alias ls='ls -Gh'
 alias vundle="vim +PluginInstall +PluginClean +qall!"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# set nvm source
+source ~/.nvm/nvm.sh
