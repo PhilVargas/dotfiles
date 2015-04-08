@@ -1,5 +1,3 @@
-
-
 BLACK="\[\033[0;30m\]"
 RED="\[\033[0;31m\]"
 GREEN="\[\033[0;32m\]"
@@ -24,12 +22,10 @@ __git_complete g _git_checkout
 export LSCOLORS=ExGxFxdxCxDxDxaccxaeex
 
 export PATH="/usr/local/bin:$PATH"
-export PATH="/Users/philipavargas/.bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
+export PATH="$PATH:$HOME/.nvm/v0.10.38/bin:"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-export LFFS=~/Desktop/Farespotter
-export LDAPUSERNAME=pvargas
-# Useful aliases
 alias g='git'
 alias vim='rvm system do /usr/local/bin/vim $@'
 alias sandbox='rails console --sandbox'
@@ -43,6 +39,8 @@ alias vimrc='vim ~/.vimrc'
 alias vundles='vim ~/.vimrc.bundles'
 
 # LFFS Aliases
+export LFFS=~/Desktop/Oversee/Farespotter
+export LDAPUSERNAME=pvargas
 alias load-lffs-images="rsync -r $LDAPUSERNAME@www01.lffs.prod:/home/travel/apps/FarespotterNet/shared/images/ $LFFS/public/images/r/"
 alias deploy="ssh $LDAPUSERNAME@deploy01.tools.ops"
 alias dssolr='bundle exec sunspot-solr start -- -d solr/data/development/ -p solr/'
