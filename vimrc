@@ -1,6 +1,11 @@
 " General settings "
 set grepprg=ag
 set shell=bash\ --login
+
+" Make message bar taller to avoid 'press enter' prompt
+set shortmess=a
+set cmdheight=2
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Vundle Stuff
