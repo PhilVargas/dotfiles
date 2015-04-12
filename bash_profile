@@ -23,7 +23,7 @@ export LSCOLORS=ExGxFxdxCxDxDxaccxaeex
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
-export PATH="$PATH:$HOME/.nvm/v0.10.38/bin:"
+export PATH="$HOME/.nvm/v0.10.38/bin:$PATH" # Use nvm node over system node
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias g='git'
