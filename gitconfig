@@ -10,6 +10,7 @@
 [color]
   ui       = true
 [alias]
+  s        = status
   ap       = add --patch
   cm       = !sh -c 'git commit -m \"$*\"' -
   co       = checkout
