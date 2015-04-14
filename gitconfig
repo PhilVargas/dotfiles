@@ -1,14 +1,16 @@
 [include]
   path     = ~/.gitconfig.secret
+[color]
+  ui       = true
 [core]
-  excludesfile = /Users/phil.vargas/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor   = vim
+[interactive]
+  singlekey = true
 [push]
   default  = simple
 [pull]
   rebase   = true
-[color]
-  ui       = true
 [alias]
   s        = status
   ap       = add --patch
