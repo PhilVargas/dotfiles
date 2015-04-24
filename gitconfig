@@ -12,7 +12,7 @@
 [pull]
   rebase   = true
 [alias]
-  s        = status
+  ls       = status
   ap       = add --patch
   cm       = !sh -c 'git commit -m \"$*\"' -
   co       = checkout
