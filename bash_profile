@@ -27,6 +27,7 @@ export PATH="$HOME/.nvm/v0.10.38/bin:$PATH" # Use nvm node over system node
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias g='git'
+alias dotfiles='cd ~/dotfiles'
 alias vim='rvm system do /usr/local/bin/vim $@'
 alias sandbox='rails console --sandbox'
 alias brails='bundle exec rails'
