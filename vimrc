@@ -87,9 +87,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 " associate *.foo with filetype bar
 au BufRead,BufNewFile *.jison setfiletype javascript
 
-""" No <shift> for command mode
-nnoremap ; :
-
 """ Color column only where text overflows
 set textwidth=100
 set colorcolumn=+0
