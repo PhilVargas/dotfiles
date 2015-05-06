@@ -2,3 +2,4 @@
 .rubocop.yml
 .DS_Store
 **/node_modules/
+**/vim/sessions/
