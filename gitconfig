@@ -11,6 +11,16 @@
   default  = simple
 [pull]
   rebase   = true
+[merge]
+  conflictstyle = diff3
+  ff            = only
+  prompt        = false
+  tool          = vimdiff
+[mergetool]
+  keepBackup    = false
+[diff]
+  renames  = true
+  tool     = vimdiff
 [alias]
   ls       = status
   ap       = add --patch

@@ -290,3 +290,6 @@ nnoremap <silent><Leader>m :call NumberToggle()<CR>
 syntax on
 set background=dark
 colorscheme base16-default
+
+"" dont autosave session
+:let g:session_autosave = 'no'
