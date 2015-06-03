@@ -245,6 +245,9 @@ nnoremap <Leader>\ :Ag<SPACE>
 "" map escape to jj
 :imap jj <Esc>
 
+"" map save to Leader-w
+nnoremap <Leader>w :w<CR>
+
 "" undo branching with gundo
 nnoremap <C-z> :GundoToggle<CR>
 
