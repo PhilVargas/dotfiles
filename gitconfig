@@ -31,6 +31,8 @@
   # LFFS aliases
   qaf      = !sh -c 'git fetch origin feature/TRAV-$1:feature/TRAV-$1 && git checkout feature/TRAV-$1' -
   nf       = !sh -c 'git checkout -b feature/TRAV-$1' - 
+  ni       = !sh -c 'git checkout -b improvement/TRAV-$1' - 
   nb       = !sh -c 'git checkout -b bugfix/TRAV-$1' -
   cob      = !sh -c 'git checkout bugfix/TRAV-$1' - 
   cof      = !sh -c 'git checkout feature/TRAV-$1' -
+  coi      = !sh -c 'git checkout improvement/TRAV-$1' -
