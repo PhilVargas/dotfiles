@@ -113,9 +113,14 @@ set omnifunc=syntaxcomplete#Complete
 set list listchars=tab:»·,trail:·,nbsp:·
 
 " Copy And Paste
-nmap _a ggVG      " Select all text in file
-vmap <C-c> "*y      " Copy to system clipboard
-vmap <C-x> "*d      " Cut to system clipboard
+" Select all text in file
+nmap _a ggVG
+
+" Copy to system clipboard
+vmap <C-c> "*y
+
+" Cut to system clipboard
+vmap <C-x> "*d
 
 " Paste from system clipboard
 map <silent><C-p> :set paste<CR>i<ESC>"+p:set nopaste<CR>
@@ -296,3 +301,8 @@ colorscheme base16-default
 
 "" dont autosave session
 :let g:session_autosave = 'no'
+
+"" switch vim tabs with shift-h / shift-l
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+
