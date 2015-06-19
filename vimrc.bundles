@@ -47,6 +47,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/emmet-vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'kshenoy/vim-signature'
 
 Plugin 'kana/vim-textobj-user'
 Plugin 'tmhedberg/matchit'
