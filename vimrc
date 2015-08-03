@@ -250,8 +250,8 @@ nnoremap <Leader>\ :Ag<SPACE>
 "" My Own Mapping
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" map escape to jj
-:imap jj <Esc>
+"" map quit to Leader-q
+nnoremap <Leader>q :q<CR>
 
 "" map save to Leader-w
 nnoremap <Leader>w :w<CR>
@@ -309,3 +309,6 @@ colorscheme base16-default
 nnoremap <S-h> gT
 nnoremap <S-l> gt
 
+"" don't save backup and swap files
+set nobackup
+set noswapfile
