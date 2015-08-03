@@ -20,7 +20,7 @@ __git_complete g _git_checkout
 # Colors ls should use for folders, files, symlinks etc, see `man ls` and
 # search for LSCOLORS
 export LSCOLORS=ExGxFxdxCxDxDxaccxaeex
-
+export NVM_DIR=~/.nvm
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/.nvm/v0.10.38/bin:$PATH" # Use nvm node over system node
@@ -54,4 +54,4 @@ alias vundle="vim +PluginInstall +PluginClean +qall!"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # set nvm source
-source ~/.nvm/nvm.sh
+source $(brew --prefix nvm)/nvm.sh
