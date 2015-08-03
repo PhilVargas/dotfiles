@@ -168,6 +168,7 @@ set winheight=999
 set foldmethod=syntax " Enable folding based on syntax rules
 let ruby_fold=1
 set foldlevelstart=1
+autocm BufNewFile,BufReadPost *.coffee setl foldmethod=indent
 " Set a nicer foldtext function
 if has("folding")
   set foldtext=MyFoldText()
