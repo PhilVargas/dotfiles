@@ -58,7 +58,6 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 
 " These could use some annotating
-set hlsearch
 set bs=2
 set ai
 set ruler
@@ -236,6 +235,9 @@ let g:notes_directories = ['~/Dropbox/shared-notes']
 """ Text search
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" highlight search terms
+set hlsearch
+
 " Grep for the word under the cursor, open results in quickfix pane
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
