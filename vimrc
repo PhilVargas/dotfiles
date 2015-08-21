@@ -82,6 +82,10 @@ nmap <C-B> :EasyBuffer<CR>
 
 """ Syntastic
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_coffeescript_checkers = ['coffeelint']
+
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_check_on_open = 1
 
 " associate *.foo with filetype bar
 au BufRead,BufNewFile *.jison setfiletype javascript
@@ -278,7 +282,6 @@ nnoremap _d :Dash<CR>
 "" Git fugitive mapping
 nnoremap ,g :Git
 
-let g:syntastic_check_on_open = 1
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 
 "" highlight mapping
