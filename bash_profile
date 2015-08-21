@@ -49,6 +49,7 @@ alias dssolr='bundle exec sunspot-solr start -- -d solr/data/development/ -p sol
 
 # Force ls to use colors (G) and use humanized file sizes (h)
 alias ls='ls -Gh'
+alias lsa='ls -Gah'
 alias vundle="vim +PluginInstall +PluginClean +qall!"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
