@@ -76,15 +76,51 @@ step "Setting up simlink files"
 
 substep "Linking linters"
 
-substep "  Linking jshintrc"
+substep " - Linking jshintrc"
 rm -f $HOME/.jshintrc
 ln -s $LOCAL_DOTFILES/linters/jshintrc $HOME/.jshintrc
 
-substep "  Linking coffeelint"
+substep " - Linking coffeelint"
 rm -f $HOME/coffeelint.json
 ln -s $LOCAL_DOTFILES/linters/coffeelint.json $HOME/coffeelint.json
 
-substep "  Linking rubocop"
+substep " - Linking rubocop"
 rm -f $HOME/.rubocop.yml
 ln -s $LOCAL_DOTFILES/linters/rubocop.yml $HOME/.rubocop.yml
+
+substep "Linking config files"
+
+substep " - Linking global gitignore"
+rm -f $HOME/.gitingnore_global
+ln -s $LOCAL_DOTFILES/gitingnore_global $HOME/.gitingnore_global
+
+substep " - Linking gitconfig"
+rm -f $HOME/.gitconfig
+ln -s $LOCAL_DOTFILES/gitconfig $HOME/.gitconfig
+
+substep " - Linking inputrc"
+rm -f $HOME/.inputrc
+ln -s $LOCAL_DOTFILES/inputrc $HOME/.inputrc
+
+substep " - Linking rspec config"
+rm -f $HOME/.rspec
+ln -s $LOCAL_DOTFILES/rspec $HOME/.rspec
+
+substep " - Linking vim bundles"
+rm -f $HOME/.vimrc.bundles
+ln -s $LOCAL_DOTFILES/vimrc.bundles $HOME/.vimrc.bundles
+
+substep " - Linking vimrc"
+rm -f $HOME/.vimrc
+ln -s $LOCAL_DOTFILES/vimrc $HOME/.vimrc
+
+substep " - Linking bash profile"
+rm -f $HOME/.bash_profile
+ln -s $LOCAL_DOTFILES/bash_profile $HOME/.bash_profile
+
+substep "Linking directories"
+
+substep " - Linking vim"
+rm -f $HOME/.vim
+ln -s $LOCAL_DOTFILES/vim $HOME/.vim
 
