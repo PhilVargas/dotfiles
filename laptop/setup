@@ -17,7 +17,7 @@ function substep() {
 }
 
 #-------------------------------------------------------------
-# Set up dotfiles
+# Install Xcode command line tools
 #-------------------------------------------------------------
 step "Checking for command line tools..."
 loc="$(xcode-\select -p 2> /dev/null)"
@@ -58,6 +58,14 @@ else
   brew install git
 fi
 
-
+#-------------------------------------------------------------
+# Install dotfiles
+#-------------------------------------------------------------
+step "Installing dotfiles"
+if [ -d $LOCAL_DOTFILES ]; then
+  substep "Dotfiles already installed. Proceeding to next step..."
+else
+  git clong https://github.com/PhilVargas/dotfiles.git $LOCAL_DOTFILES
+fi
 
 
