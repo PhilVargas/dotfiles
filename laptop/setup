@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------
+# Preamble
+#-------------------------------------------------------------
+LOCAL_DOTFILES="$HOME/dotfiles"
+
+function getc() {
+  IFS= read -r -n1 -d '' "$@"
+}
+
+function step() {
+  echo && echo $1
+}
+
+function substep() {
+  echo "    $1"
+}
+
+#-------------------------------------------------------------
+# Set up dotfiles
+#-------------------------------------------------------------
+step "Checking for command line tools..."
+loc="$(xcode-\select -p 2> /dev/null)"
+if [[ $loc =~ "Xcode.app" ]]; then
+  substep "Command line tools are already installed. Skipping."
+else
+  substep "Installing the Command Line Tools (expect a GUI popup):"
+  xcode-\select --install
+  substep "Press any key when the installation has completed."
+  getc
+fi
+
+#-------------------------------------------------------------
+# Install Homebrew
+#-------------------------------------------------------------
+step "Checking for up-to-date- Homebrew installation..."
+
+loc="$(which brew 2> /dev/null)"
+if [[ $loc =~ "brew" ]]; then
+  substep "brew is already installed.. Updating..."
+  brew update
+else
+  substep "Installing Homebrew"
+  cd
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+
+#-------------------------------------------------------------
+# Install Git
+#-------------------------------------------------------------
+step "Installing git command line tools"
+
+loc="$(git --exec-path 2> /dev/null)"
+if [[ $loc =~ "git" ]]; then
+  substep "git is already installed. Proceeding to next step..."
+else
+  brew install git
+fi
+
+
+
+
