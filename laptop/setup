@@ -68,4 +68,23 @@ else
   git clong https://github.com/PhilVargas/dotfiles.git $LOCAL_DOTFILES
 fi
 
+#-------------------------------------------------------------
+# Symlinks
+#-------------------------------------------------------------
+# add option to keep simlink if already present
+step "Setting up simlink files"
+
+substep "Linking linters"
+
+substep "  Linking jshintrc"
+rm -f $HOME/.jshintrc
+ln -s $LOCAL_DOTFILES/linters/jshintrc $HOME/.jshintrc
+
+substep "  Linking coffeelint"
+rm -f $HOME/coffeelint.json
+ln -s $LOCAL_DOTFILES/linters/coffeelint.json $HOME/coffeelint.json
+
+substep "  Linking rubocop"
+rm -f $HOME/.rubocop.yml
+ln -s $LOCAL_DOTFILES/linters/rubocop.yml $HOME/.rubocop.yml
 
