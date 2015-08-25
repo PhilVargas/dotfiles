@@ -13,7 +13,7 @@ __git_complete g _git_checkout
 
 # Colors ls should use for folders, files, symlinks etc, see `man ls` and
 # search for LSCOLORS
-export LSCOLORS=ExGxFxdxCxDxDxaccxaeex
+export LSCOLORS=exGxFxdxCxDxDxaccxaeex
 export NVM_DIR=~/.nvm
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
