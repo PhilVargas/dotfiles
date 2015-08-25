@@ -1,16 +1,10 @@
-BLACK="\[\033[0;30m\]"
-RED="\[\033[0;31m\]"
-GREEN="\[\033[0;32m\]"
-YELLOW="\[\033[0;33m\]"
-BLUE="\[\033[0;34m\]"
-DEFAULT="\[\033[0;00m\]"
+# bash_profile
+# load shell config files in ~/dotfiles/shell
 
-function parse_git_branch {
- ref=$(git symbolic-ref HEAD 2> /dev/null) || return
- echo "("${ref#refs/heads/}")"
-}
+SHELL_CONFIG=$HOME/dotfiles/shell
 
-export PS1="$YELLOW\u $RED\W$GREEN \$(parse_git_branch)$DEFAULT\$ "
+# Contains PS1 colorized prompt
+source $SHELL_CONFIG/bash-prompt.sh
 
 # Load git completions
 git_completion_script=/usr/local/etc/bash_completion.d/git-completion.bash
