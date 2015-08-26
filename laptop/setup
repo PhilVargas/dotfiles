@@ -1,0 +1,220 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------
+# Preamble
+#-------------------------------------------------------------
+LOCAL_DOTFILES="$HOME/dotfiles"
+
+function getc() {
+  IFS= read -r -n1 -d '' "$@"
+}
+
+function step() {
+  echo && echo $1
+}
+
+function substep() {
+  echo "    $1"
+}
+
+#-------------------------------------------------------------
+# Install Xcode command line tools
+#-------------------------------------------------------------
+step "Checking for command line tools..."
+loc="$(xcode-\select -p 2> /dev/null)"
+if [[ $loc =~ "Xcode.app" ]]; then
+  substep "Command line tools are already installed. Skipping."
+else
+  substep "Installing the Command Line Tools (expect a GUI popup):"
+  xcode-\select --install
+  substep "Press any key when the installation has completed."
+  getc
+fi
+
+#-------------------------------------------------------------
+# Install Homebrew
+#-------------------------------------------------------------
+step "Checking for up-to-date- Homebrew installation..."
+
+loc="$(which brew 2> /dev/null)"
+if [[ $loc =~ "brew" ]]; then
+  substep "brew is already installed.. Updating..."
+  brew update
+else
+  substep "Installing Homebrew"
+  cd
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+
+#-------------------------------------------------------------
+# Install Git
+#-------------------------------------------------------------
+step "Installing git command line tools"
+
+loc="$(git --exec-path 2> /dev/null)"
+if [[ $loc =~ "git" ]]; then
+  substep "git is already installed. Proceeding to next step..."
+else
+  brew install git
+fi
+
+#-------------------------------------------------------------
+# Install dotfiles
+#-------------------------------------------------------------
+step "Installing dotfiles"
+if [ -d $LOCAL_DOTFILES ]; then
+  substep "Dotfiles already installed. Proceeding to next step..."
+else
+  git clong https://github.com/PhilVargas/dotfiles.git $LOCAL_DOTFILES
+fi
+
+#-------------------------------------------------------------
+# Symlinks
+#-------------------------------------------------------------
+# add option to keep simlink if already present
+step "Setting up simlink files"
+
+substep "Linking linters"
+
+substep " - Linking jshintrc"
+rm -f $HOME/.jshintrc
+ln -s $LOCAL_DOTFILES/linters/jshintrc $HOME/.jshintrc
+
+substep " - Linking coffeelint"
+rm -f $HOME/coffeelint.json
+ln -s $LOCAL_DOTFILES/linters/coffeelint.json $HOME/coffeelint.json
+
+substep " - Linking rubocop"
+rm -f $HOME/.rubocop.yml
+ln -s $LOCAL_DOTFILES/linters/rubocop.yml $HOME/.rubocop.yml
+
+substep "Linking config files"
+
+substep " - Linking global gitignore"
+rm -f $HOME/.gitingnore_global
+ln -s $LOCAL_DOTFILES/gitingnore_global $HOME/.gitingnore_global
+
+substep " - Linking gitconfig"
+rm -f $HOME/.gitconfig
+ln -s $LOCAL_DOTFILES/gitconfig $HOME/.gitconfig
+
+substep " - Linking inputrc"
+rm -f $HOME/.inputrc
+ln -s $LOCAL_DOTFILES/inputrc $HOME/.inputrc
+
+substep " - Linking rspec config"
+rm -f $HOME/.rspec
+ln -s $LOCAL_DOTFILES/rspec $HOME/.rspec
+
+substep " - Linking vim bundles"
+rm -f $HOME/.vimrc.bundles
+ln -s $LOCAL_DOTFILES/vimrc.bundles $HOME/.vimrc.bundles
+
+substep " - Linking vimrc"
+rm -f $HOME/.vimrc
+ln -s $LOCAL_DOTFILES/vimrc $HOME/.vimrc
+
+substep " - Linking bash profile"
+rm -f $HOME/.bash_profile
+ln -s $LOCAL_DOTFILES/bash_profile $HOME/.bash_profile
+
+substep "Linking directories"
+
+substep " - Linking vim"
+rm -f $HOME/.vim
+ln -s $LOCAL_DOTFILES/vim $HOME/.vim
+
+
+#-------------------------------------------------------------
+# Install dev tools
+#-------------------------------------------------------------
+source $LOCAL_DOTFILES/shell/helpers.sh
+
+step "Installing dev packages"
+substep " - Installing postgres"
+brew_install_or_upgrade 'postgres'
+
+substep " - Installing redis"
+brew_install_or_upgrade 'redis'
+
+substep " - Installing the silver searcher"
+brew_install_or_upgrade 'the_silver_searcher'
+
+substep " - Installing vim"
+brew_install_or_upgrade 'vim'
+
+substep " - Installing ctags"
+brew_install_or_upgrade 'ctags'
+
+substep " - Installing imagemagick"
+brew_install_or_upgrade 'imagemagick'
+
+substep " - Installing node"
+brew_install_or_upgrade 'node'
+
+substep " - Installing openssl"
+brew_install_or_upgrade 'openssl'
+brew unlink openssl && brew link openssl --force
+
+substep " - Installing libyaml"
+brew_install_or_upgrade 'libyaml'
+
+#-------------------------------------------------------------
+# Installing ruby gems
+#-------------------------------------------------------------
+step "Installing useful ruby gems"
+
+ruby_gems=(
+  bundler
+  rubygems-update
+  gem-ctags
+  pry
+  pry-byebug
+  rake
+  rspec
+  rubocop
+  pg
+)
+for gem in ${ruby_gems[*]}; do
+  substep "Installing ruby gem: $gem" && echo
+  gem install $gem
+done
+
+#-------------------------------------------------------------
+# Installing node modules
+#-------------------------------------------------------------
+step "Installing useful node modules"
+
+substep "Updating npm"
+npm install npm -g
+node_packages=(
+  babel
+  babel-core
+  babel-eslint
+  chai
+  coffeelint
+  eslint
+  express
+  mocha
+  node-jsx
+  npm
+  browserify
+  coffee-script
+  jest
+  jest-cli
+  vinyl-buffer
+  vinyl-source-stream
+  watchify
+  coffee-reactify
+  gulp
+  gulp-uglify
+  reactify
+  react
+)
+
+for package in ${node_package[*]}; do
+  substep "Installing node package: $package..." && echo
+  npm install -g $package
+done
+
+# consider writing script to install gulp / react dev dependencies
