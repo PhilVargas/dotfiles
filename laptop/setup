@@ -128,7 +128,7 @@ ln -s $LOCAL_DOTFILES/vim $HOME/.vim
 #-------------------------------------------------------------
 # Install dev tools
 #-------------------------------------------------------------
-source $LOCAL_DOTFILES/laptop/helpers.sh
+source $LOCAL_DOTFILES/shell/helpers.sh
 
 step "Installing dev packages"
 substep " - Installing postgres"
@@ -165,6 +165,7 @@ brew_install_or_upgrade 'libyaml'
 step "Installing useful ruby gems"
 
 ruby_gems=(
+  bundler
   rubygems-update
   gem-ctags
   pry
