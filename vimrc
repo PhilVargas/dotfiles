@@ -23,7 +23,7 @@ endif
 
 filetype plugin indent on
 
-" summon CtrlP with <space>+f
+" summon CtrlP with <space>+p
 let g:ctrlp_map = '<leader>p'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 if executable('ag')
@@ -56,11 +56,17 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
-
-" These could use some annotating
+""" Set backspace behavior. see :help 'bs'
 set bs=2
+
+
+""" Turn on autoindent behavior. see :help 'ai'
 set ai
+
+""" Turn on ruler info. Displays the character position, line number, and file % of the location of
+""" the cursor. see :help 'ruler'
 set ruler
+
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
 " set t_Co=256
@@ -78,7 +84,6 @@ endif
 
 """ Show EasyBuffer
 nmap <C-B> :EasyBuffer<CR>
-
 
 """ Syntastic
 let g:syntastic_javascript_checkers = ['jshint']
@@ -271,7 +276,7 @@ nnoremap <C-e> <S-a><Esc>
 nnoremap <C-a> <S-i><Esc>
 
 "" Select all text in a file
-nnoremap <Leader>a ggVg
+nnoremap <Leader>a ggVG
 
 "" Copy to system clipboard
 set clipboard=unnamed
