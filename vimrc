@@ -271,7 +271,7 @@ nnoremap <C-e> <S-a><Esc>
 nnoremap <C-a> <S-i><Esc>
 
 "" Select all text in a file
-nnoremap <Leader>a ggVg
+nnoremap <Leader>a ggVG
 
 "" Copy to system clipboard
 set clipboard=unnamed
