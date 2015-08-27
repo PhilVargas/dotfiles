@@ -17,9 +17,7 @@ export PATH="$HOME/.nvm/v0.10.38/bin:$PATH" # Use nvm node over system node
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Load git completions
-git_completion_script=/usr/local/etc/bash_completion.d/git-completion.bash
-test -s $git_completion_script && source $git_completion_script
-__git_complete g _git_checkout
+source $SHELL_CONFIG/git-completion.sh
 
 # Colors ls should use for folders, files, symlinks etc, see `man ls` and
 # search for LSCOLORS
