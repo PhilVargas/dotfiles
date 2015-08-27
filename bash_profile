@@ -5,23 +5,14 @@ SHELL_CONFIG=$HOME/dotfiles/shell
 # Contains PS1 colorized prompt
 source $SHELL_CONFIG/bash-prompt.sh
 
+# contains environment variables
+source $SHELL_CONFIG/env.sh
+
 # contains common aliases
 source $SHELL_CONFIG/alias.sh
 
-#-------------------------------------------------------------
-# Path
-#-------------------------------------------------------------
-export PATH="/usr/local/bin:$PATH"
-export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/.nvm/v0.10.38/bin:$PATH" # Use nvm node over system node
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 # Load git completions
 source $SHELL_CONFIG/git-completion.sh
-
-# Colors ls should use for folders, files, symlinks etc, see `man ls` and
-# search for LSCOLORS
-export LSCOLORS=exGxFxdxCxDxDxaccxaeex
 
 # LFFS Aliases
 # TODO: move to .secret file
