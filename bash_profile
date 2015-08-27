@@ -15,7 +15,7 @@ source $SHELL_CONFIG/alias.sh
 source $SHELL_CONFIG/git-completion.sh
 
 # Load machine specific settings
-source $HOME/dotfiles/bash_profile.secret
+[[ -s "$HOME/dotfiles/bash_profile.secret" ]] && source $HOME/dotfiles/bash_profile.secret
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
