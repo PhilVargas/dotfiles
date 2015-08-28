@@ -1,14 +1,14 @@
 [color]
-  ui       = true
+  ui            = true
 [core]
-  editor   = vim
-  excludesfile = ~/.gitignore_global
+  editor        = vim
+  excludesfile  = ~/.gitignore_global
 [interactive]
   singlekey = true
 [push]
-  default  = simple
+  default       = simple
 [pull]
-  rebase   = true
+  rebase        = true
 [merge]
   conflictstyle = diff3
   ff            = only
