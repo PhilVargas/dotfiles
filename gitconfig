@@ -18,6 +18,8 @@
   tool          = vimdiff
 [mergetool]
   keepBackup    = false
+[pretty]
+  brief    = '%Cred%h%Creset - %C(yellow)%d%Cgreen(%ad) %C(blue)<%an>%Creset %s'
 [diff]
   renames  = true
   tool     = vimdiff
@@ -28,7 +30,7 @@
   cm       = commit -m
   co       = checkout
   cv       = commit -v
-  l        = log --graph --pretty=format:'%Cred%h%Creset - %C(yellow)%d%Cgreen(%ad) %C(blue)<%an>%Creset %s' --abbrev-commit --date=short
+  l        = log --graph --format=brief --abbrev-commit
   ls       = status
   mt       = mergetool
   qa       = !sh -c 'git fetch origin $1:$1 && git checkout $1' -
