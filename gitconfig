@@ -4,7 +4,9 @@
   editor        = vim
   excludesfile  = ~/.gitignore_global
 [interactive]
-  singlekey = true
+  singlekey     = true
+[log]
+  date          = short
 [push]
   default       = simple
 [pull]
