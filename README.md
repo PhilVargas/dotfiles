@@ -8,7 +8,7 @@ download `laptop/setup` and run:
 
 Enter your password as needed.  
 
-If using vim, insure to run `vundles` from the command line after the installation to install
+If using vim, ensure to run `vundles` from the command line after the installation to install
 vim plugins.
 
 Inspired by [jkrmr/dotfiles](https://github.com/jkrmr/dotfiles)
