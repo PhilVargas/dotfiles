@@ -17,8 +17,3 @@ source $SHELL_CONFIG/git-completion.sh
 # Load machine specific settings
 [[ -s "$HOME/dotfiles/bash_profile.secret" ]] && source $HOME/dotfiles/bash_profile.secret
 
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# set nvm source
-source $(brew --prefix nvm)/nvm.sh
