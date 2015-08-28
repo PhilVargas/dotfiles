@@ -1,3 +1,2 @@
-[user]
-  name='Phil Vargas'
-  email='philipavargas@gmail.com'
+[include]
+  path     = ./.gitconfig.secret

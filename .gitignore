@@ -2,3 +2,4 @@ vim/bundle/
 vim/sessions/
 gitconfig.secret
 bash_profile.secret
+.gitconfig.secret
