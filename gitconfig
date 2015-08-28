@@ -1,16 +1,16 @@
-[include]
-  path     = ~/.gitconfig.secret
 [color]
-  ui       = true
+  ui            = true
 [core]
-  excludesfile = ~/.gitignore_global
-  editor   = vim
+  editor        = vim
+  excludesfile  = ~/.gitignore_global
 [interactive]
-  singlekey = true
+  singlekey     = true
+[log]
+  date          = short
 [push]
-  default  = simple
+  default       = simple
 [pull]
-  rebase   = true
+  rebase        = true
 [merge]
   conflictstyle = diff3
   ff            = only
@@ -18,21 +18,25 @@
   tool          = vimdiff
 [mergetool]
   keepBackup    = false
+[pretty]
+  brief    = '%Cred%h%Creset - %C(yellow)%d%Cgreen(%ad) %C(blue)<%an>%Creset %s'
 [diff]
   renames  = true
   tool     = vimdiff
 [alias]
-  cm      = commit -m
-  ls       = status
+  a        = add
   ap       = add --patch
+  ca       = commit --amend
+  cm       = commit -m
   co       = checkout
+  cv       = commit -v
+  l        = log --graph --format=brief --abbrev-commit
+  ls       = status
+  mt       = mergetool
   qa       = !sh -c 'git fetch origin $1:$1 && git checkout $1' -
+  r        = rebase
+  ra       = rebase --abort
+  rc       = rebase --continue
 
-  # LFFS aliases
-  qaf      = !sh -c 'git fetch origin feature/TRAV-$1:feature/TRAV-$1 && git checkout feature/TRAV-$1' -
-  nf       = !sh -c 'git checkout -b feature/TRAV-$1' - 
-  ni       = !sh -c 'git checkout -b improvement/TRAV-$1' - 
-  nb       = !sh -c 'git checkout -b bugfix/TRAV-$1' -
-  cob      = !sh -c 'git checkout bugfix/TRAV-$1' - 
-  cof      = !sh -c 'git checkout feature/TRAV-$1' -
-  coi      = !sh -c 'git checkout improvement/TRAV-$1' -
+[include]
+  path     = ~/.gitconfig.secret
