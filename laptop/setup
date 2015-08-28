@@ -217,4 +217,30 @@ for package in ${node_package[*]}; do
   npm install -g $package
 done
 
-# consider writing script to install gulp / react dev dependencies
+#-------------------------------------------------------------
+# Installing RVM
+#-------------------------------------------------------------
+step "Installing rvm"
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  substep "rvm is already installed. Skipping..."
+else
+  \curl -sSL https://get.rvm.io | bash -s stable --rails -- --ignore-dotfiles
+fi
+
+
+#-------------------------------------------------------------
+# Installing NVM
+#-------------------------------------------------------------
+step "Installing nvm"
+if [[ -d "$HOME/.nvm" ]]; then
+  substep "nvm is already installing. Skipping..."
+else
+  git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+  exec $SHELL -l
+fi
+step "Installing node v0.10.38"
+if [[ -d "$HOME/.nvm/v0.10.38" ]]; then
+  substep "node v0.10.38 is already installed. Skipping..."
+else
+  nvm install 0.10.38
+fi
