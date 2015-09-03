@@ -193,6 +193,10 @@ step "Setting up simlink files"
 
 substep "Linking linters"
 
+substep " - Linking eslint"
+rm -f $HOME/.eslintrc
+ln -s $LOCAL_DOTFILES/linters/eslintrc $HOME/.eslintrc
+
 substep " - Linking jshintrc"
 rm -f $HOME/.jshintrc
 ln -s $LOCAL_DOTFILES/linters/jshintrc $HOME/.jshintrc
