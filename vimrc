@@ -259,6 +259,10 @@ nnoremap <Leader>\ :Ag<SPACE>
 "" My Own Mapping
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""" map escape to jj
+imap jj <Esc>
+
 "" map quit to Leader-q
 nnoremap <Leader>q :q<CR>
 
