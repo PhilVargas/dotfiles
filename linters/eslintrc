@@ -97,7 +97,10 @@
     "yoda": [1, "never", { "exceptRange": true }],
 
     "init-declarations": [1, "never"],
+    "no-catch-shadow": 0,
     "no-delete-var": 1,
+    "no-label-var": 0,
+    "no-shadow-restricted-named": 0,
     "no-shadow": 1,
     "no-undef-init": 1,
     "no-undef": 1,
