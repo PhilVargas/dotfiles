@@ -137,9 +137,9 @@ node_packages=(
   chai
   coffeelint
   eslint
+  eslint-plugin-react
   express
   mocha
-  npm
   browserify
   coffee-script
   vinyl-buffer

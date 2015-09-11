@@ -1,5 +1,8 @@
 {
   "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
   "env": {
     "browser": true,
     "es6": true,
@@ -106,6 +109,9 @@
     "superInFunctions": true,
     "templateStrings": true,
     "jsx": true
+  },
+
+  "react": {
   }
 
 }
