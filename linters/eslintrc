@@ -94,7 +94,7 @@
 
     "react/display-name": 1,
     "react/jsx-boolean-value": 0,
-    "react/jsx-closing-bracket-location": [1, { location: "tag-aligned" },
+    "react/jsx-closing-bracket-location": [1, { location: "tag-aligned" }],
     "react/jsx-curly-spacing": [1, "always", { "allowMultiline": false }],
     "react/jsx-indent-props": 0,
     "react/jsx-max-props-per-line": 0,
@@ -145,7 +145,7 @@
     "globalReturn": false,
     "jsx": true,
     "experimentalObjetRestSpread": false
-  },
+  }
 
 }
 
