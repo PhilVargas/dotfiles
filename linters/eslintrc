@@ -108,6 +108,16 @@
     "no-unused-vars": 1,
     "no-use-before-define": 1,
 
+    "callback-return": 0,
+    "global-require": 1,
+    "handle-callback-err": 0,
+    "no-mixed-required": 0,
+    "no-new-require": 0,
+    "no-path-concat": 0,
+    "no-process-exit": 0,
+    "no-restricted-modules": 0,
+    "no-sync": 0,
+
     "array-bracket-spacing": [1, "never"],
     "block-spacing": [1, "always"],
     "brace-style": [1, "1tbs", { "allowSingleLine": true }],
