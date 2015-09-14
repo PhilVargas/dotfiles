@@ -59,7 +59,6 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 """ Set backspace behavior. see :help 'bs'
 set bs=2
 
-
 """ Turn on autoindent behavior. see :help 'ai'
 set ai
 
@@ -100,7 +99,6 @@ set textwidth=100
 set colorcolumn=+0
 call matchadd('ColorColumn', '\%81v', 100)
 
-
 """ runtime plugin/dragvisuals.vim
 vmap  <expr>  <LEFT>   DVB_Drag('left')
 vmap  <expr>  <RIGHT>  DVB_Drag('right')
@@ -121,9 +119,6 @@ set omnifunc=syntaxcomplete#Complete
 set list listchars=tab:»·,trail:·,nbsp:·
 
 " Copy And Paste
-" Select all text in file
-nmap _a ggVG
-
 " Copy to system clipboard
 vmap <C-c> "*y
 
@@ -146,9 +141,6 @@ set expandtab
 
 " map leader to space
 let mapleader=" "
-
-" vim-rspec settings
-map <Leader>a :call RunAllSpecs()<CR>
 
 " Index ctags from any project, including those outside Rails
 map <Leader>ct :!ctags -R .<CR>
@@ -223,7 +215,7 @@ highlight Folded cterm=italic ctermfg=black ctermbg=110
 "" NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" Open NERDTree with ctrl+n
+""" Open NERDTree with Space+n
 map <Leader>n :NERDTreeToggle<CR>
 
 """ Have NERDTree and CtrlP play nice together
