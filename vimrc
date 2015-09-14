@@ -251,8 +251,10 @@ nnoremap <Leader>\ :Ag<SPACE>
 "" My Own Mapping
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" map leader r to refresh vimrc
+nnoremap <Leader>r :source ~/.vimrc<CR>
 
-""" map delete in insert mode to ctrl-d
+""" map forward delete in insert mode to ctrl-d
 inoremap <C-d> <Del>
 
 """ map escape to jj
