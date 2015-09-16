@@ -16,6 +16,8 @@
     "ecmascript": 6
   },
   "rules": {
+
+  // Possible Errors
     "comma-dangle": [1, "never"],
     "no-cond-assign": [1, "always"],
     "no-console": 0,
@@ -45,6 +47,7 @@
     "valid-typeof": 1,
     "no-unexpected-multiline": 1,
 
+  // Best Practices
     "accessor-pairs": 0,
     "block-scoped-var": 0,
     "complexity": 0,
@@ -100,6 +103,7 @@
     "wrap-iife": 1,
     "yoda": [1, "never", { "exceptRange": true }],
 
+  // Variables
     "init-declarations": [1, "never"],
     "no-catch-shadow": 0,
     "no-delete-var": 1,
@@ -112,6 +116,7 @@
     "no-unused-vars": 1,
     "no-use-before-define": 1,
 
+  // Node.js and CommonJS
     "callback-return": 0,
     "global-require": 1,
     "handle-callback-err": 0,
@@ -122,6 +127,7 @@
     "no-restricted-modules": 0,
     "no-sync": 0,
 
+  // Stylistic Issues
     "array-bracket-spacing": [1, "never"],
     "block-spacing": [1, "always"],
     "brace-style": [1, "1tbs", { "allowSingleLine": true }],
@@ -180,6 +186,7 @@
     "spaced-comment": 0,
     "wrap-regex": 0,
 
+  // ES6
     "arrow-parens": [0, "as-needed"],
     "arrow-spacing": [1, { "before": true, "after": true }],
     "constructor-super": 2,
@@ -197,6 +204,7 @@
     "prefer-template": 1,
     "require-yield": 0,
 
+  // React plugin
     "react/display-name": 1,
     "react/jsx-boolean-value": 0,
     "react/jsx-closing-bracket-location": [1, { location: "tag-aligned" }],
@@ -225,6 +233,7 @@
     "react/wrap-multilines": 1
   },
 
+  // Whitelisted ES Features
   "ecmaFeatures": {
     "arrowFunctions": true,
     "binaryLiterals": true,
