@@ -5,6 +5,8 @@
   ],
   "env": {
     "browser": true,
+    "commonjs": true,
+    "jquery": true,
     "es6": true,
     "meteor": true,
     "mocha": true,
