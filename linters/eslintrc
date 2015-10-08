@@ -92,7 +92,7 @@
     "no-self-compare": 1,
     "no-sequences": 1,
     "no-throw-literal": 0,
-    "no-unused-expressions": [1, { allowShortCircuit: true, allowTernary: true }],
+    "no-unused-expressions": [1, { "allowShortCircuit": true, "allowTernary": true }],
     "no-useless-call": 1,
     "no-useless-concat": 1,
     "no-void": 2,
@@ -207,7 +207,7 @@
   // React plugin
     "react/display-name": 1,
     "react/jsx-boolean-value": 0,
-    "react/jsx-closing-bracket-location": [1, { location: "tag-aligned" }],
+    "react/jsx-closing-bracket-location": [1, { "location": "tag-aligned" }],
     "react/jsx-curly-spacing": [1, "always", { "allowMultiline": false }],
     "react/jsx-indent-props": 0,
     "react/jsx-max-props-per-line": 0,
