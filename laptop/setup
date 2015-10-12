@@ -139,6 +139,7 @@ node_packages=(
   eslint
   eslint-plugin-react
   express
+  express-generator
   mocha
   browserify
   coffee-script
