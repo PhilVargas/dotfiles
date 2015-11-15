@@ -179,12 +179,6 @@ else
   git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
   exec $SHELL -l
 fi
-step "Installing node v0.10.38"
-if [[ -d "$HOME/.nvm/v0.10.38" ]]; then
-  substep "node v0.10.38 is already installed. Skipping..."
-else
-  nvm install 0.10.38
-fi
 
 #-------------------------------------------------------------
 # Symlinks
