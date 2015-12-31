@@ -91,6 +91,13 @@ let g:syntastic_coffeescript_checkers = ['coffeelint']
 let g:syntastic_aggregate_errors = 1
 let g:syntastic_check_on_open = 1
 
+
+""" emmet
+let g:user_emmet_settings = {
+\  'html' : {
+\    'quote_char': "'",
+\  },
+\}
 " associate *.foo with filetype bar
 au BufRead,BufNewFile *.jison, *.jsx setfiletype javascript
 au BufRead,BufNewFile *eslintrc setfiletype json
