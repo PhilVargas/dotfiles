@@ -28,6 +28,7 @@ else
   xcode-\select --install
   substep "Press any key when the installation has completed."
   getc
+  sudo xcodebuild -license
 fi
 
 #-------------------------------------------------------------
