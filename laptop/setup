@@ -104,6 +104,28 @@ substep " - Installing libyaml"
 brew_install_or_upgrade 'libyaml'
 
 #-------------------------------------------------------------
+# Installing RVM
+#-------------------------------------------------------------
+step "Installing rvm"
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  substep "rvm is already installed. Skipping..."
+else
+  \curl -sSL https://get.rvm.io | bash -s stable --rails -- --ignore-dotfiles
+fi
+
+
+#-------------------------------------------------------------
+# Installing NVM
+#-------------------------------------------------------------
+step "Installing nvm"
+if [[ -d "$HOME/.nvm" ]]; then
+  substep "nvm is already installing. Skipping..."
+else
+  git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+  exec $SHELL -l
+fi
+
+#-------------------------------------------------------------
 # Installing ruby gems
 #-------------------------------------------------------------
 step "Installing useful ruby gems"
@@ -158,28 +180,6 @@ for package in ${node_package[*]}; do
   substep "Installing node package: $package..." && echo
   npm install -g $package
 done
-
-#-------------------------------------------------------------
-# Installing RVM
-#-------------------------------------------------------------
-step "Installing rvm"
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-  substep "rvm is already installed. Skipping..."
-else
-  \curl -sSL https://get.rvm.io | bash -s stable --rails -- --ignore-dotfiles
-fi
-
-
-#-------------------------------------------------------------
-# Installing NVM
-#-------------------------------------------------------------
-step "Installing nvm"
-if [[ -d "$HOME/.nvm" ]]; then
-  substep "nvm is already installing. Skipping..."
-else
-  git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-  exec $SHELL -l
-fi
 
 #-------------------------------------------------------------
 # Symlinks
