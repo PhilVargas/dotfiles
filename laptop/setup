@@ -103,6 +103,9 @@ brew unlink openssl && brew link openssl --force
 substep " - Installing libyaml"
 brew_install_or_upgrade 'libyaml'
 
+substep " - Installing cmake"
+brew_install_or_upgrade 'cmake'
+
 #-------------------------------------------------------------
 # Installing RVM
 #-------------------------------------------------------------
