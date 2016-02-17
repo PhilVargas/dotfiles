@@ -28,6 +28,7 @@ else
   xcode-\select --install
   substep "Press any key when the installation has completed."
   getc
+  sudo xcodebuild -license
 fi
 
 #-------------------------------------------------------------
@@ -102,6 +103,31 @@ brew unlink openssl && brew link openssl --force
 substep " - Installing libyaml"
 brew_install_or_upgrade 'libyaml'
 
+substep " - Installing cmake"
+brew_install_or_upgrade 'cmake'
+
+#-------------------------------------------------------------
+# Installing RVM
+#-------------------------------------------------------------
+step "Installing rvm"
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+  substep "rvm is already installed. Skipping..."
+else
+  \curl -sSL https://get.rvm.io | bash -s stable --rails -- --ignore-dotfiles
+fi
+
+
+#-------------------------------------------------------------
+# Installing NVM
+#-------------------------------------------------------------
+step "Installing nvm"
+if [[ -d "$HOME/.nvm" ]]; then
+  substep "nvm is already installing. Skipping..."
+else
+  git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+  exec $SHELL -l
+fi
+
 #-------------------------------------------------------------
 # Installing ruby gems
 #-------------------------------------------------------------
@@ -157,28 +183,6 @@ for package in ${node_package[*]}; do
   substep "Installing node package: $package..." && echo
   npm install -g $package
 done
-
-#-------------------------------------------------------------
-# Installing RVM
-#-------------------------------------------------------------
-step "Installing rvm"
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-  substep "rvm is already installed. Skipping..."
-else
-  \curl -sSL https://get.rvm.io | bash -s stable --rails -- --ignore-dotfiles
-fi
-
-
-#-------------------------------------------------------------
-# Installing NVM
-#-------------------------------------------------------------
-step "Installing nvm"
-if [[ -d "$HOME/.nvm" ]]; then
-  substep "nvm is already installing. Skipping..."
-else
-  git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-  exec $SHELL -l
-fi
 
 #-------------------------------------------------------------
 # Symlinks
@@ -241,6 +245,17 @@ rm -f $HOME/.vim
 ln -s $LOCAL_DOTFILES/vim $HOME/.vim
 
 #-------------------------------------------------------------
+# Vundle
+#-------------------------------------------------------------
+vim +PluginInstall +PluginClean +qall!
+
+#-------------------------------------------------------------
+# YouCompleteMe
+#-------------------------------------------------------------
+cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --tern-completer && cd -
+
+#-------------------------------------------------------------
 # End
 #-------------------------------------------------------------
+exec $SHELL -l
 step "Install script complete."

@@ -1,5 +1,6 @@
 vim/bundle/
 vim/sessions/
+vim/.netrwhist
 gitconfig.secret
 bash_profile.secret
 .gitconfig.secret
