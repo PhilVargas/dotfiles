@@ -8,10 +8,12 @@ alias be="bundle exec $1"
 #-------------------------------------------------------------
 # command line aliases
 #-------------------------------------------------------------
-alias reload='exec $SHELL -l'   # resource current shell tab
-alias sproc="ps aux | grep $1"  # grep for processes
-alias ls='ls -Gh'               # display in color with humanized file sizes
-alias lsa='ls -Gah'             # display all in color with humanized file sizes
+alias reload='exec $SHELL -l'       # resource current shell tab
+alias sproc="ps aux | grep $1"      # grep for processes
+alias ls='ls -Gh'                   # display in color with humanized file sizes
+alias lsf='ls -Ghl'                 # display long in color with humanized file sizes
+alias lsa='ls -Gah'                 # display all in color with humanized file sizes
+alias lsfa='ls -Gahl'               # display all long in color with humanized file sizes
 alias g='git'
 
 #-------------------------------------------------------------
