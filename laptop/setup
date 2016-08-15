@@ -248,11 +248,19 @@ ln -s $LOCAL_DOTFILES/vim $HOME/.vim
 #-------------------------------------------------------------
 # Vundle
 #-------------------------------------------------------------
+step "Setting up Vundle files"
+if [[ -s "~/.vim/bundle/Vundle.vim" ]]; then
+  substep "Vundle files already installed. Skipping Installation."
+else
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+substep "Installing Plugins"
 vim +PluginInstall +PluginClean +qall!
 
 #-------------------------------------------------------------
 # YouCompleteMe
 #-------------------------------------------------------------
+step "Setting up YouCompleteMe"
 cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --tern-completer && cd -
 
 #-------------------------------------------------------------
