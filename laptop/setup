@@ -113,7 +113,7 @@ step "Installing rvm"
 if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
   substep "rvm is already installed. Skipping..."
 else
-  \curl -sSL https://get.rvm.io | bash -s stable --rails -- --ignore-dotfiles
+  \curl -sSL https://get.rvm.io | bash -s stable --rails --ignore-dotfiles
 fi
 
 
