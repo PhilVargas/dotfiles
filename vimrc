@@ -86,6 +86,7 @@ nmap <C-B> :EasyBuffer<CR>
 
 """ Syntastic
 let g:syntastic_javascript_checkers = ['eslint']
+let g:javascript_plugin_jsdoc = 1
 let g:syntastic_coffeescript_checkers = ['coffeelint']
 
 let g:syntastic_aggregate_errors = 1
