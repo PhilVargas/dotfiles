@@ -282,8 +282,8 @@ nnoremap <C-z> :GundoToggle<CR>
 nnoremap <Leader>kw :EraseBadWhitespace<CR>
 
 "" map to emacs end of line and beginning of line
-nnoremap <C-e> <S-a><Esc>
-nnoremap <C-a> <S-i><Esc>
+nnoremap <C-e> <S-^>
+nnoremap <C-a> <S-$>
 
 "" Select all text in a file
 nnoremap <Leader>a ggVG
