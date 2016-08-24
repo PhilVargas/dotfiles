@@ -35,6 +35,7 @@ Plugin 'skwp/greplace.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'slim-template/vim-slim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'shinokada/dragvisuals.vim'
 
 "" Note Taking
 Plugin 'xolox/vim-misc'
