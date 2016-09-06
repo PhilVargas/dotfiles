@@ -330,3 +330,6 @@ nnoremap <S-l> gt
 "" don't save backup and swap files
 set nobackup
 set noswapfile
+
+"" hack to open quickfix (from ag search) in new tab
+nnoremap <C-t> <C-w><CR><C-w>T
