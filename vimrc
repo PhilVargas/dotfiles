@@ -333,3 +333,7 @@ set noswapfile
 
 "" hack to open quickfix (from ag search) in new tab
 nnoremap <C-t> <C-w><CR><C-w>T
+
+"" enable mouse movement, selection, right clicking, etc
+set mouse=a
+set mousem=popup_setpos
