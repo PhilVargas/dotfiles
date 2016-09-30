@@ -19,7 +19,7 @@
 [mergetool]
   keepBackup    = false
 [pretty]
-  brief    = '%Cred%h%Creset - %C(yellow)%d%Cgreen(%ad) %C(blue)<%an>%Creset %s'
+  brief    = %Cred%h%Creset - %C(yellow)%d%Cgreen(%ad) %C(blue)<%an>%Creset %s
 [diff]
   renames  = true
   tool     = vimdiff
