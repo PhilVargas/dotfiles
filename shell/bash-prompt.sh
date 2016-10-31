@@ -12,7 +12,7 @@ DEFAULT="\033[0;00m"
 
 function git_color() {
   local git_status="$(git status 2> /dev/null)"
-  if [[ $git_status =~ "working directory clean" ]]; then
+  if [[ $git_status =~ "working tree clean" ]]; then
     if [[ $git_status =~ "Your branch is ahead of" ]]; then
       echo -ne $YELLOW
     else
