@@ -227,6 +227,9 @@ highlight Folded cterm=italic ctermfg=black ctermbg=110
 """ Open NERDTree with Space+n
 map <Leader>n :NERDTreeToggle<CR>
 
+""" Open NERDTree at the current file with Space+N
+map <Leader>N :NERDTreeFind<CR>
+
 """ Have NERDTree and CtrlP play nice together
 let g:NERDTreeChDirMode       = 2
 let g:ctrlp_working_path_mode = 'rw'
