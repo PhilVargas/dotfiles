@@ -4,7 +4,11 @@
 
 download `laptop/setup` and run:
 
-    curl -O setup https://raw.githubusercontent.com/PhilVargas/dotfiles/master/laptop/setup
+    curl -o setup https://raw.githubusercontent.com/PhilVargas/dotfiles/master/laptop/setup
+
+And then run with
+
+    ./setup
 
 Enter your password as needed.  
 
