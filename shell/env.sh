@@ -1,9 +1,17 @@
 #-------------------------------------------------------------
+# React Native
+#-------------------------------------------------------------
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+
+#-------------------------------------------------------------
 # Path
 #-------------------------------------------------------------
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$ANDROID_HOME/tools"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$(yarn global bin):$PATH"
 
 #-------------------------------------------------------------
 # LSColors
