@@ -1,0 +1,153 @@
+{
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-e>"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "<C-a>"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "<CR>"
+      ],
+      "after": [
+        "<CR>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "<C-w>",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "<C-w>",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "<C-w>",
+        "h"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "<C-w>",
+        "l"
+      ]
+    },
+    {
+      "before": [
+        "<C-t>"
+      ],
+      "commands": [
+        "editor.action.goToDeclaration"
+      ]
+    },
+    {
+      "before": [
+        "<C-w>",
+        "t"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "m"
+      ],
+      "commands": [
+        ":set relativenumber!"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindings": [],
+  "vim.handleKeys": {
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-k>": true,
+    "<C-l>": true,
+    "<C-e>": true,
+    "<C-a>": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "editor.tabSize": 2,
+  "editor.dragAndDrop": false,
+  "editor.scrollBeyondLastLine": false,
+  "editor.showFoldingControls": "always",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "workbench.colorTheme": "Solarized Dark",
+  "terminal.external.osxExec": "iTerm.app",
+  "emmet.preferences": {
+    "html": {
+      "quote_char": "'"
+    }
+  },
+  "workbench.activityBar.visible": true,
+  "workbench.statusBar.visible": true,
+  "editor.minimap.enabled": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.list.openMode": "doubleClick",
+  "window.zoomLevel": 1,
+  "eslint.packageManager": "yarn",
+  "editor.lineNumbers": "relative",
+  "eslint.alwaysShowStatus": true,
+  "ruby.format": "rubocop",
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "editor.formatOnSaveTimeout": 1500,
+  "editor.formatOnSave": true,
+  "ruby.intellisense": "rubyLocate",
+  "eslint.run": "onSave",
+  "editor.highlightActiveIndentGuide": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "tslint.alwaysShowStatus": true,
+  "files.autoSave": "off",
+  "cucumberautocomplete.steps": [
+    "features/step_definitions/**/*.rb"
+  ],
+  "cucumberautocomplete.syncfeatures": "features/**/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true
+}
