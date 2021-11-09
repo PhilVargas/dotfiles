@@ -90,15 +90,11 @@ brew_install_or_upgrade 'vim'
 substep " - Installing ctags"
 brew_install_or_upgrade 'ctags'
 
-substep " - Installing imagemagick"
-brew_install_or_upgrade 'imagemagick'
+# substep " - Installing imagemagick"
+# brew_install_or_upgrade 'imagemagick'
 
 substep " - Installing node"
 brew_install_or_upgrade 'node'
-
-substep " - Installing openssl"
-brew_install_or_upgrade 'openssl'
-brew unlink openssl && brew link openssl --force
 
 substep " - Installing libyaml"
 brew_install_or_upgrade 'libyaml'
@@ -116,7 +112,6 @@ else
   \curl -sSL https://get.rvm.io | bash -s stable --rails --ignore-dotfiles
 fi
 
-
 #-------------------------------------------------------------
 # Installing NVM
 #-------------------------------------------------------------
@@ -130,6 +125,17 @@ else
 fi
 
 #-------------------------------------------------------------
+# Installing Yarn
+#-------------------------------------------------------------
+step "Installing yarn"
+loc="$(which yarn 2> /dev/null)"
+if [[ $loc =~ "yarn" ]]; then
+  substep "yarn is already installed. Proceeding to next step..."
+else
+npm install --global yarn
+fi
+
+#-------------------------------------------------------------
 # Installing ruby gems
 #-------------------------------------------------------------
 step "Installing useful ruby gems"
@@ -138,51 +144,12 @@ ruby_gems=(
   bundler
   rubygems-update
   gem-ctags
-  pry
-  pry-byebug
-  rake
-  rspec
   rubocop
   pg
 )
 for gem in ${ruby_gems[*]}; do
   substep "Installing ruby gem: $gem" && echo
   gem install $gem
-done
-
-#-------------------------------------------------------------
-# Installing node modules
-#-------------------------------------------------------------
-step "Installing useful node modules"
-
-substep "Updating npm"
-npm install npm -g
-node_packages=(
-  babel
-  babel-core
-  babel-eslint
-  chai
-  coffeelint
-  eslint
-  eslint-plugin-react
-  express
-  express-generator
-  mocha
-  browserify
-  coffee-script
-  vinyl-buffer
-  vinyl-source-stream
-  watchify
-  coffee-reactify
-  gulp
-  gulp-uglify
-  reactify
-  react
-)
-
-for package in ${node_package[*]}; do
-  substep "Installing node package: $package..." && echo
-  npm install -g $package
 done
 
 #-------------------------------------------------------------
@@ -197,23 +164,11 @@ substep " - Linking eslint"
 rm -f $HOME/.eslintrc
 ln -s $LOCAL_DOTFILES/linters/eslintrc $HOME/.eslintrc
 
-substep " - Linking jshintrc"
-rm -f $HOME/.jshintrc
-ln -s $LOCAL_DOTFILES/linters/jshintrc $HOME/.jshintrc
-
-substep " - Linking coffeelint"
-rm -f $HOME/coffeelint.json
-ln -s $LOCAL_DOTFILES/linters/coffeelint.json $HOME/coffeelint.json
-
-substep " - Linking rubocop"
-rm -f $HOME/.rubocop.yml
-ln -s $LOCAL_DOTFILES/linters/rubocop.yml $HOME/.rubocop.yml
-
 substep "Linking config files"
 
 substep " - Linking global gitignore"
 rm -f $HOME/.gitingnore_global
-ln -s $LOCAL_DOTFILES/gitingnore_global $HOME/.gitingnore_global
+ln -s $LOCAL_DOTFILES/gitignore_global $HOME/.gitignore_global
 
 substep " - Linking gitconfig"
 rm -f $HOME/.gitconfig
@@ -260,8 +215,8 @@ vim +PluginInstall +PluginClean +qall!
 #-------------------------------------------------------------
 # YouCompleteMe
 #-------------------------------------------------------------
-step "Setting up YouCompleteMe"
-cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --tern-completer && cd -
+# step "Setting up YouCompleteMe"
+# cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --tern-completer && cd -
 
 #-------------------------------------------------------------
 # End

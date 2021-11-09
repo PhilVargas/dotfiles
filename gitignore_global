@@ -1,5 +1,8 @@
 *.sw?
 .rubocop.yml
 .DS_Store
-**/node_modules/
+/node_modules
 **/vim/sessions/
+
+.idea
+.vscode
