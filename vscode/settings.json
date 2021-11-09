@@ -1,0 +1,234 @@
+{
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<C-n>"
+      ],
+      "after": [
+        "v",
+        "i",
+        "w"
+      ]
+    },
+    {
+      "before": [
+        "<C-e>"
+      ],
+      "after": [
+        "^"
+      ]
+    },
+    {
+      "before": [
+        "<C-a>"
+      ],
+      "after": [
+        "$"
+      ]
+    },
+    {
+      "before": [
+        "<CR>"
+      ],
+      "after": [
+        "<CR>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "after": [
+        "<C-w>",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<C-j>"
+      ],
+      "after": [
+        "<C-w>",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "<C-h>"
+      ],
+      "after": [
+        "<C-w>",
+        "h"
+      ]
+    },
+    {
+      "before": [
+        "<C-l>"
+      ],
+      "after": [
+        "<C-w>",
+        "l"
+      ]
+    },
+    {
+      "before": [
+        "<C-t>"
+      ],
+      "commands": [
+        "editor.action.goToDeclaration"
+      ]
+    },
+    {
+      "before": [
+        "<C-w>",
+        "t"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "m"
+      ],
+      "commands": [
+        ":set relativenumber!"
+      ]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        "editor.action.addSelectionToNextFindMatch"
+      ]
+    },
+    {
+      "before": [
+        "<C-x>"
+      ],
+      "commands": [
+        "editor.action.moveSelectionToNextFindMatch"
+      ]
+    },
+    {
+      "before": [
+        "<C-o>"
+      ],
+      "commands": [
+        "editor.action.moveSelectionToPreviousFindMatch"
+      ]
+    },
+    {
+      "before": [
+        "a"
+      ],
+      "after": [
+        "<Esc>",
+        "a"
+      ]
+    },
+    {
+      "before": [
+        "i"
+      ],
+      "after": [
+        "<Esc>",
+        "i"
+      ]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-h>": true,
+    "<C-j>": true,
+    "<C-k>": true,
+    "<C-l>": true,
+    "<C-e>": true,
+    "<C-a>": true,
+    "<C-p>": true,
+  },
+  "files.trimTrailingWhitespace": true,
+  "editor.tabSize": 2,
+  "editor.dragAndDrop": false,
+  "editor.scrollBeyondLastLine": false,
+  "editor.showFoldingControls": "always",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "workbench.colorTheme": "Solarized Dark",
+  "terminal.external.osxExec": "iTerm.app",
+  "emmet.preferences": {
+    "html": {
+      "quote_char": "'"
+    }
+  },
+  "workbench.activityBar.visible": true,
+  "workbench.statusBar.visible": true,
+  "editor.minimap.enabled": false,
+  "eslint.packageManager": "yarn",
+  "editor.lineNumbers": "on",
+  "eslint.alwaysShowStatus": true,
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "eslint.run": "onSave",
+  "editor.highlightActiveIndentGuide": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "tslint.alwaysShowStatus": true,
+  "files.autoSave": "off",
+  "cucumberautocomplete.steps": [
+    "features/step_definitions/**/*.rb"
+  ],
+  "cucumberautocomplete.syncfeatures": "features/**/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "workbench.editor.focusRecentEditorAfterClose": false,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.git": false,
+    "**/.project": true,
+    "**/.settings": true
+  },
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSaveTimeout": 1500,
+  "python.jediEnabled": false,
+  "python.linting.pylintArgs": [
+    "--load-plugins",
+    "pylint-flask"
+  ],
+  "python.formatting.provider": "black",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
+  "ruby.format": "rubocop",
+  "ruby.intellisense": "rubyLocate",
+  "ruby.lint": {
+    "rubocop": {
+      "path": "/Users/philipvargas/.rvm/gems/ruby-2.5.1/wrappers/"
+    }
+  },
+  "ruby.useBundler": true,
+  "python.languageServer": "Default",
+  "files.associations": {
+    "*.txt": "plaintext"
+  },
+  "editor.formatOnSave": true,
+}
