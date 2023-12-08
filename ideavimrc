@@ -1,0 +1,20 @@
+# Plugins
+set surround
+
+# map leader
+let mapleader = "\<Space>"
+
+imap jj <Esc>
+
+" set relative line number function
+function! ToggleRelativeNumber()
+    " Check if relative number is set and toggle
+    if &relativenumber
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunction
+
+nnoremap <Leader>m :call ToggleRelativeNumber()<CR>

@@ -3,4 +3,5 @@ vim/sessions/
 vim/.netrwhist
 gitconfig.secret
 bash_profile.secret
+zshrc.secret
 .gitconfig.secret

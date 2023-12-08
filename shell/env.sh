@@ -4,6 +4,11 @@
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 #-------------------------------------------------------------
+# Homebrew
+#-------------------------------------------------------------
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+#-------------------------------------------------------------
 # Path
 #-------------------------------------------------------------
 export PATH="/usr/local/bin:$PATH"
@@ -23,9 +28,15 @@ export LSCOLORS=exGxFxdxCxDxDxaccxaeex
 #-------------------------------------------------------------
 # Source scripts
 #-------------------------------------------------------------
+
 # set nvm source
 source ~/.nvm/nvm.sh
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+#-------------------------------------------------------------
+# Zsh configuration
+#-------------------------------------------------------------
+setopt NO_CASE_GLOB
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
