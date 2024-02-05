@@ -1,5 +1,11 @@
 # Plugins
 set surround
+set commentary
+set highlightedyank
+set easymotion
+set notimeout
+set which-key
+set multiple-cursors
 
 # map leader
 let mapleader = "\<Space>"
@@ -18,3 +24,36 @@ function! ToggleRelativeNumber()
 endfunction
 
 nnoremap <Leader>m :call ToggleRelativeNumber()<CR>
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+
+" Jump between methods
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+" Go to code
+nmap <leader>gd :action GotoDeclaration<CR>
+nmap <leader>gy :action GotoTypeDeclaration<CR>
+nmap <leader>gi :action GotoImplementation<CR>
+nmap <leader>gu :action ShowUsages<CR>
+nmap <leader>gt :action GotoTest<CR>
+nmap <leader>gf :action Back<CR>
+nmap <leader>gb :action Forward<CR>
+
+" Popup navigation
+" haven't figured out how to get this to work..
+" inoremap <C-j> <action> PopupMenu-selectNext<CR>
+" inoremap <C-k> <Action> PopupMenu-selectPrev<CR>
+" nnoremap <silent> <C-j> :action Up<CR>
+" nnoremap <silent> <C-k> :action Down<CR>
+
+
+"" map to emacs end of line and beginning of line
+nnoremap <C-e> <S-^>
+nnoremap <C-a> <S-$>
