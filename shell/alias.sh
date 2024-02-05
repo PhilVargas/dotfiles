@@ -15,6 +15,7 @@ alias lsf='ls -Ghl'                 # display long in color with humanized file 
 alias lsa='ls -Gah'                 # display all in color with humanized file sizes
 alias lsfa='ls -Gahl'               # display all long in color with humanized file sizes
 alias g='git'
+alias dc='docker-compose'
 
 #-------------------------------------------------------------
 # navigation aliases
@@ -31,4 +32,3 @@ alias dotfiles='cd ~/dotfiles'
 #-------------------------------------------------------------
 alias vim='rvm system do /usr/local/bin/vim $@'       # open vim with correct version of ruby
 alias vundle="vim +PluginInstall +PluginClean +qall!" # run vundle install
-

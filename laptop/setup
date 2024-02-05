@@ -81,8 +81,11 @@ brew_install_or_upgrade 'postgres'
 substep " - Installing redis"
 brew_install_or_upgrade 'redis'
 
-substep " - Installing the silver searcher"
-brew_install_or_upgrade 'the_silver_searcher'
+substep " - Installing openssl"
+brew_install_or_upgrade 'openssl'
+
+# substep " - Installing the silver searcher"
+# brew_install_or_upgrade 'the_silver_searcher'
 
 substep " - Installing vim"
 brew_install_or_upgrade 'vim'
@@ -102,6 +105,9 @@ brew_install_or_upgrade 'libyaml'
 substep " - Installing cmake"
 brew_install_or_upgrade 'cmake'
 
+substep " - Installing git completions"
+brew_install_or_upgrade 'bash-completion'
+
 #-------------------------------------------------------------
 # Installing RVM
 #-------------------------------------------------------------
@@ -119,9 +125,7 @@ step "Installing nvm"
 if [[ -d "$HOME/.nvm" ]]; then
   substep "nvm is already installing. Skipping..."
 else
-  git clone https://github.com/creationix/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
-  exec $SHELL -l
-  cd
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 fi
 
 #-------------------------------------------------------------
@@ -142,8 +146,6 @@ step "Installing useful ruby gems"
 
 ruby_gems=(
   bundler
-  rubygems-update
-  gem-ctags
   rubocop
   pg
 )
@@ -190,9 +192,18 @@ substep " - Linking vimrc"
 rm -f $HOME/.vimrc
 ln -s $LOCAL_DOTFILES/vimrc $HOME/.vimrc
 
-substep " - Linking bash profile"
-rm -f $HOME/.bash_profile
-ln -s $LOCAL_DOTFILES/bash_profile $HOME/.bash_profile
+substep " - Linking ideavimrc"
+rm -f $HOME/.ideavimrc
+ln -s $LOCAL_DOTFILES/ideavimrc $HOME/.ideavimrc
+
+# substep " - Linking bash profile"
+# rm -f $HOME/.bash_profile
+# ln -s $LOCAL_DOTFILES/bash_profile $HOME/.bash_profile
+
+substep " - Linking  zprofile"
+rm -f $HOME/.zshrc
+ln -s $LOCAL_DOTFILES/zshrc $HOME/.zshrc
+ln -s $LOCAL_DOTFILES/zshrc.secret $HOME/.zshrc.secret
 
 substep "Linking directories"
 
