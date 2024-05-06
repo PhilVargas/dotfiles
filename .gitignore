@@ -5,3 +5,4 @@ gitconfig.secret
 bash_profile.secret
 zshrc.secret
 .gitconfig.secret
+rubocop.secret.yml
