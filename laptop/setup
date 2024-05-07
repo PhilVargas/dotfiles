@@ -76,7 +76,7 @@ source $LOCAL_DOTFILES/shell/helpers.sh
 
 step "Installing dev packages"
 substep " - Installing postgres"
-brew_install_or_upgrade 'postgres'
+brew_install_or_upgrade 'postgresql'
 
 substep " - Installing redis"
 brew_install_or_upgrade 'redis'
@@ -105,8 +105,8 @@ brew_install_or_upgrade 'libyaml'
 substep " - Installing cmake"
 brew_install_or_upgrade 'cmake'
 
-substep " - Installing git completions"
-brew_install_or_upgrade 'bash-completion'
+# substep " - Installing git completions"
+# brew_install_or_upgrade 'bash-completion'
 
 #-------------------------------------------------------------
 # Installing RVM
