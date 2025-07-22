@@ -43,7 +43,7 @@ if [[ $loc =~ "brew" ]]; then
 else
   substep "Installing Homebrew"
   cd
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 
@@ -84,17 +84,14 @@ brew_install_or_upgrade 'redis'
 substep " - Installing openssl"
 brew_install_or_upgrade 'openssl'
 
-# substep " - Installing the silver searcher"
-# brew_install_or_upgrade 'the_silver_searcher'
-
 substep " - Installing vim"
 brew_install_or_upgrade 'vim'
 
 substep " - Installing ctags"
 brew_install_or_upgrade 'ctags'
 
-# substep " - Installing imagemagick"
-# brew_install_or_upgrade 'imagemagick'
+substep " - Installing imagemagick"
+brew_install_or_upgrade 'imagemagick'
 
 substep " - Installing node"
 brew_install_or_upgrade 'node'
@@ -109,14 +106,10 @@ substep " - Installing git completions"
 brew_install_or_upgrade 'bash-completion'
 
 #-------------------------------------------------------------
-# Installing RVM
+# Installing rbenv
 #-------------------------------------------------------------
-step "Installing rvm"
-if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
-  substep "rvm is already installed. Skipping..."
-else
-  \curl -sSL https://get.rvm.io | bash -s stable --rails --ignore-dotfiles
-fi
+brew_install_or_upgrade 'rbenv'
+brew_install_or_upgrade 'ruby-build'
 
 #-------------------------------------------------------------
 # Installing NVM
@@ -195,10 +188,6 @@ ln -s $LOCAL_DOTFILES/vimrc $HOME/.vimrc
 substep " - Linking ideavimrc"
 rm -f $HOME/.ideavimrc
 ln -s $LOCAL_DOTFILES/ideavimrc $HOME/.ideavimrc
-
-# substep " - Linking bash profile"
-# rm -f $HOME/.bash_profile
-# ln -s $LOCAL_DOTFILES/bash_profile $HOME/.bash_profile
 
 substep " - Linking  zprofile"
 rm -f $HOME/.zshrc

@@ -30,5 +30,5 @@ alias dotfiles='cd ~/dotfiles'
 #-------------------------------------------------------------
 # editor aliases
 #-------------------------------------------------------------
-alias vim='rvm system do /usr/local/bin/vim $@'       # open vim with correct version of ruby
+# alias vim='rvm system do /usr/local/bin/vim $@'       # open vim with correct version of ruby
 alias vundle="vim +PluginInstall +PluginClean +qall!" # run vundle install
