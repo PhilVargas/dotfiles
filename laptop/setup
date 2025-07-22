@@ -194,6 +194,10 @@ rm -f $HOME/.zshrc
 ln -s $LOCAL_DOTFILES/zshrc $HOME/.zshrc
 ln -s $LOCAL_DOTFILES/zshrc.secret $HOME/.zshrc.secret
 
+substep " - Linking CLAUDE.md"
+rm -f $HOME/.CLAUDE.md
+ln -s $LOCAL_DOTFILES/CLAUDE.md $HOME/.CLAUDE.md
+
 substep "Linking directories"
 
 substep " - Linking vim"
