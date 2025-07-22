@@ -13,9 +13,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 #-------------------------------------------------------------
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$PATH:$ANDROID_HOME/tools"
-export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$(yarn global bin):$PATH"
 
 #-------------------------------------------------------------
@@ -32,8 +30,8 @@ export LSCOLORS=exGxFxdxCxDxDxaccxaeex
 # set nvm source
 source ~/.nvm/nvm.sh
 
-# Load RVM into a shell session *as a function*
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# Initialize rbenv
+eval "$(rbenv init -)"
 
 #-------------------------------------------------------------
 # Zsh configuration
