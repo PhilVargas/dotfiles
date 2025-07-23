@@ -39,8 +39,7 @@ These rules ensure maintainability, safety, and developer velocity.
   expect(result.length).to eq(1) # Bad
   expect(result[0]).to eq(value) # Bad
   ```
-- **T-5 (SHOULD)** Use named subjects for service and callable classes that use methods in the assertion.
-We prefer the named subject `instance` over examples like `data`, `service`, or `result`. For simple assertions set a subject directly and assert against it in the test.
+- **T-5 (SHOULD)** Use named subjects for service and callable classes that use methods in the assertion.We prefer the named subject `instance` over examples like `data`, `service`, or `result`. For simple assertions set a subject directly and assert against it in the test.
 
 ```ruby
   # Good
@@ -173,7 +172,7 @@ Analyze similar parts of the codebase and determine whether your plan:
 - reuses existing code
 ```
 
-## QCODE
+### QCODE
 
 When I type "qcode", this means:
 
