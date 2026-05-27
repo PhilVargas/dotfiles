@@ -1,0 +1,61 @@
+" Plugins are managed by vim-plug: https://github.com/junegunn/vim-plug
+" Install/update with :PlugInstall / :PlugUpdate (laptop/setup does this for you).
+
+if &compatible
+  set nocompatible
+end
+
+call plug#begin('~/.vim/plugged')
+
+" Define bundles via Github repos
+Plug 'bitc/vim-bad-whitespace'
+Plug 'bling/vim-airline'
+Plug 'godlygeek/tabular'
+Plug 'kien/ctrlp.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'wesQ3/vim-windowswap'
+Plug 'airblade/vim-gitgutter'
+Plug 'troydm/easybuffer.vim'
+Plug 'sjl/gundo.vim'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rails'
+Plug 'xolox/vim-session'
+Plug 'tpope/vim-endwise'
+Plug 'skwp/greplace.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'slim-template/vim-slim'
+
+"" Note Taking
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
+
+"" Tmux related
+Plug 'christoomey/vim-tmux-navigator'
+
+"" Efficiency
+Plug 'jiangmiao/auto-pairs'
+Plug 'mattn/emmet-vim'
+Plug 'chriskempson/base16-vim'
+Plug 'kshenoy/vim-signature'
+
+Plug 'kana/vim-textobj-user'
+Plug 'tmhedberg/matchit'
+Plug 'nelstrom/vim-textobj-rubyblock'
+
+Plug 'pangloss/vim-javascript'
+Plug 'vim-ruby/vim-ruby'
+Plug 'kchmck/vim-coffee-script'
+Plug 'mustache/vim-mustache-handlebars'
+
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+end
+
+call plug#end()

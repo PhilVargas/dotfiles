@@ -1,9 +1,9 @@
-# bash_profile
+# zshrc — symlinked to ~/.zshrc
 # load shell config files in ~/dotfiles/shell
 SHELL_CONFIG=$HOME/dotfiles/shell
 
 # Contains PS1 colorized prompt
-source $SHELL_CONFIG/bash-prompt.sh
+source $SHELL_CONFIG/zsh-prompt.sh
 
 # contains environment variables
 source $SHELL_CONFIG/env.sh
@@ -15,5 +15,4 @@ source $SHELL_CONFIG/alias.sh
 source $SHELL_CONFIG/git-completion.sh
 
 # Load machine specific settings
-[[ -s "$HOME/dotfiles/bash_profile.secret" ]] && source $HOME/dotfiles/bash_profile.secret
-
+[[ -s "$HOME/dotfiles/home/zshrc.secret" ]] && source $HOME/dotfiles/home/zshrc.secret
