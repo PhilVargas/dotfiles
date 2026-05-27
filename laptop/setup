@@ -72,39 +72,41 @@ log "Installing global gems"
 mise exec -- gem install bundler rubocop
 
 #-------------------------------------------------------------
-# Symlinks: home/<file> in the repo -> ~/.<file> so programs find them
+# Symlinks: repo file -> location where the program expects it
 #-------------------------------------------------------------
-log "Linking dotfiles into \$HOME"
+log "Linking dotfiles into place"
 
 # Secret files are gitignored; create an empty one if missing before linking.
 [[ -f "$DOTFILES/home/zshrc.secret" ]] || touch "$DOTFILES/home/zshrc.secret"
 
+# link <repo-path> <home-path>: symlink $DOTFILES/<repo-path> -> $HOME/<home-path>
 link() {
-  local src="$DOTFILES/home/$1" dest="$HOME/.$1"
+  local src="$DOTFILES/$1" dest="$HOME/$2"
+  mkdir -p "$(dirname "$dest")"
   rm -rf "$dest"
   ln -s "$src" "$dest"
-  info "~/.$1 -> home/$1"
+  info "~/$2 -> $1"
 }
 
-link "zshrc"
-link "zshrc.secret"
-link "gitconfig"
-link "gitignore_global"
-link "inputrc"
-link "rspec"
-link "ideavimrc"
-link "eslintrc"
-link "tmux.conf"
-link "vimrc"
-link "vimrc.bundles"
-link "vim"
+# dot <name>: shorthand for the common case, home/<name> -> ~/.<name>
+dot() { link "home/$1" ".$1"; }
 
-# VSCode settings live outside $HOME's dotfile convention.
-info "~/Library/.../Code/User/settings.json -> vscode/settings.json"
-vscode_user="$HOME/Library/Application Support/Code/User"
-mkdir -p "$vscode_user"
-rm -f "$vscode_user/settings.json"
-ln -s "$DOTFILES/vscode/settings.json" "$vscode_user/settings.json"
+dot "zshrc"
+dot "zshrc.secret"
+dot "gitconfig"
+dot "gitignore_global"
+dot "inputrc"
+dot "rspec"
+dot "ideavimrc"
+dot "eslintrc"
+dot "tmux.conf"
+dot "vimrc"
+dot "vimrc.bundles"
+dot "vim"
+
+# Files that don't follow the home/<name> -> ~/.<name> convention.
+link "vscode/settings.json" "Library/Application Support/Code/User/settings.json"
+link "agents/CLAUDE.md"     ".claude/CLAUDE.md"
 
 #-------------------------------------------------------------
 # Vim plugins (vim-plug)
