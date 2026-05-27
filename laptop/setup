@@ -1,225 +1,148 @@
 #!/usr/bin/env bash
-#-------------------------------------------------------------
-# Preamble
-#-------------------------------------------------------------
-LOCAL_DOTFILES="$HOME/dotfiles"
+#
+# Bootstrap a fresh macOS machine from these dotfiles.
+#
+#   curl -fsSL https://raw.githubusercontent.com/PhilVargas/dotfiles/main/laptop/setup | bash
+#
+# Safe to re-run: every step is idempotent.
 
-function getc() {
-  IFS= read -r -n1 -d '' "$@"
-}
+set -euo pipefail
 
-function step() {
-  echo && echo $1
-}
+DOTFILES="${DOTFILES:-$HOME/dotfiles}"
+REPO_URL="https://github.com/PhilVargas/dotfiles.git"
 
-function substep() {
-  echo "    $1"
-}
+log()  { printf "\n\033[1;34m==>\033[0m %s\n" "$1"; }
+info() { printf "    %s\n" "$1"; }
 
 #-------------------------------------------------------------
-# Install Xcode command line tools
+# Xcode command line tools (provides git, clang, make, ...)
 #-------------------------------------------------------------
-step "Checking for command line tools..."
-loc="$(xcode-\select -p 2> /dev/null)"
-if [[ $loc =~ "Xcode.app" ]]; then
-  substep "Command line tools are already installed. Skipping."
+log "Checking for Xcode Command Line Tools"
+if xcode-select -p >/dev/null 2>&1; then
+  info "Already installed."
 else
-  substep "Installing the Command Line Tools (expect a GUI popup):"
-  xcode-\select --install
-  substep "Press any key when the installation has completed."
-  getc
-  sudo xcodebuild -license
+  info "Installing (expect a GUI popup)..."
+  xcode-select --install
+  info "Press any key once the installation has completed."
+  read -r -n1 -s </dev/tty
 fi
 
 #-------------------------------------------------------------
-# Install Homebrew
+# Homebrew
 #-------------------------------------------------------------
-step "Checking for up-to-date- Homebrew installation..."
-
-loc="$(which brew 2> /dev/null)"
-if [[ $loc =~ "brew" ]]; then
-  substep "brew is already installed.. Updating..."
+log "Checking for Homebrew"
+if command -v brew >/dev/null 2>&1; then
+  info "Already installed. Updating..."
   brew update
 else
-  substep "Installing Homebrew"
-  cd
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  info "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-
+# Load brew into this shell (Apple Silicon path).
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 #-------------------------------------------------------------
-# Install Git
+# Dotfiles
 #-------------------------------------------------------------
-step "Installing git command line tools"
-
-loc="$(git --exec-path 2> /dev/null)"
-if [[ $loc =~ "git" ]]; then
-  substep "git is already installed. Proceeding to next step..."
+log "Fetching dotfiles"
+if [[ -d "$DOTFILES" ]]; then
+  info "Already present at $DOTFILES."
 else
-  brew install git
+  git clone "$REPO_URL" "$DOTFILES"
 fi
 
 #-------------------------------------------------------------
-# Install dotfiles
+# Homebrew packages
 #-------------------------------------------------------------
-step "Installing dotfiles"
-if [ -d $LOCAL_DOTFILES ]; then
-  substep "Dotfiles already installed. Proceeding to next step..."
+log "Installing Homebrew packages from Brewfile"
+brew bundle --file="$DOTFILES/Brewfile"
+
+#-------------------------------------------------------------
+# Symlinks: repo file -> location where the program expects it
+#-------------------------------------------------------------
+log "Linking dotfiles into place"
+
+# Secret files are gitignored; create an empty one if missing before linking.
+[[ -f "$DOTFILES/home/zshrc.secret" ]] || touch "$DOTFILES/home/zshrc.secret"
+
+# link <repo-path> <home-path>: symlink $DOTFILES/<repo-path> -> $HOME/<home-path>
+link() {
+  local src="$DOTFILES/$1" dest="$HOME/$2"
+  mkdir -p "$(dirname "$dest")"
+  rm -rf "$dest"
+  ln -s "$src" "$dest"
+  info "~/$2 -> $1"
+}
+
+# dot <name>: shorthand for the common case, home/<name> -> ~/.<name>
+dot() { link "home/$1" ".$1"; }
+
+dot "zshrc"
+dot "zshrc.secret"
+dot "gitconfig"
+dot "gitignore_global"
+dot "inputrc"
+dot "rspec"
+dot "ideavimrc"
+dot "tmux.conf"
+dot "vimrc"
+dot "vimrc.bundles"
+dot "vim"
+dot "tmux"
+dot "config/mise/config.toml"
+
+# Files that don't follow the home/<name> -> ~/.<name> convention.
+link "editor/settings.json" "Library/Application Support/Code/User/settings.json"
+link "editor/settings.json" "Library/Application Support/Cursor/User/settings.json"
+link "agents/CLAUDE.md"      ".claude/CLAUDE.md"
+
+#-------------------------------------------------------------
+# Language runtimes via mise (Ruby & Node)
+#-------------------------------------------------------------
+# Versions are declared in home/config/mise/config.toml (linked above).
+log "Installing language runtimes with mise"
+eval "$(mise activate bash)"
+mise install
+info "Enabling corepack (yarn / pnpm)"
+mise exec -- corepack enable
+
+log "Installing global gems"
+mise exec -- gem install bundler rubocop
+
+#-------------------------------------------------------------
+# Vim plugins (vim-plug)
+#-------------------------------------------------------------
+log "Setting up vim-plug"
+plug="$HOME/.vim/autoload/plug.vim"
+if [[ -f "$plug" ]]; then
+  info "vim-plug already installed."
 else
-  git clone https://github.com/PhilVargas/dotfiles.git $LOCAL_DOTFILES
+  curl -fsSLo "$plug" --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+info "Installing plugins"
+vim +PlugInstall +PlugClean! +qall
 
 #-------------------------------------------------------------
-# Install dev tools
+# Editor theme extensions for VSCode + Cursor (best-effort; needs the CLI)
 #-------------------------------------------------------------
-source $LOCAL_DOTFILES/shell/helpers.sh
-
-step "Installing dev packages"
-substep " - Installing postgres"
-brew_install_or_upgrade 'postgres'
-
-substep " - Installing redis"
-brew_install_or_upgrade 'redis'
-
-substep " - Installing openssl"
-brew_install_or_upgrade 'openssl'
-
-substep " - Installing vim"
-brew_install_or_upgrade 'vim'
-
-substep " - Installing ctags"
-brew_install_or_upgrade 'ctags'
-
-substep " - Installing imagemagick"
-brew_install_or_upgrade 'imagemagick'
-
-substep " - Installing node"
-brew_install_or_upgrade 'node'
-
-substep " - Installing libyaml"
-brew_install_or_upgrade 'libyaml'
-
-substep " - Installing cmake"
-brew_install_or_upgrade 'cmake'
-
-substep " - Installing git completions"
-brew_install_or_upgrade 'bash-completion'
-
-#-------------------------------------------------------------
-# Installing rbenv
-#-------------------------------------------------------------
-brew_install_or_upgrade 'rbenv'
-brew_install_or_upgrade 'ruby-build'
-
-#-------------------------------------------------------------
-# Installing NVM
-#-------------------------------------------------------------
-step "Installing nvm"
-if [[ -d "$HOME/.nvm" ]]; then
-  substep "nvm is already installing. Skipping..."
-else
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-fi
-
-#-------------------------------------------------------------
-# Installing Yarn
-#-------------------------------------------------------------
-step "Installing yarn"
-loc="$(which yarn 2> /dev/null)"
-if [[ $loc =~ "yarn" ]]; then
-  substep "yarn is already installed. Proceeding to next step..."
-else
-npm install --global yarn
-fi
-
-#-------------------------------------------------------------
-# Installing ruby gems
-#-------------------------------------------------------------
-step "Installing useful ruby gems"
-
-ruby_gems=(
-  bundler
-  rubocop
-  pg
-)
-for gem in ${ruby_gems[*]}; do
-  substep "Installing ruby gem: $gem" && echo
-  gem install $gem
+for cli in code cursor; do
+  command -v "$cli" >/dev/null 2>&1 || continue
+  log "Installing $cli theme extensions"
+  for ext in catppuccin.catppuccin-vsc enkia.tokyo-night; do
+    "$cli" --install-extension "$ext" >/dev/null 2>&1 && info "$ext" || true
+  done
 done
 
 #-------------------------------------------------------------
-# Symlinks
+# Default shell
 #-------------------------------------------------------------
-# add option to keep simlink if already present
-step "Setting up simlink files"
-
-substep "Linking linters"
-
-substep " - Linking eslint"
-rm -f $HOME/.eslintrc
-ln -s $LOCAL_DOTFILES/linters/eslintrc $HOME/.eslintrc
-
-substep "Linking config files"
-
-substep " - Linking global gitignore"
-rm -f $HOME/.gitingnore_global
-ln -s $LOCAL_DOTFILES/gitignore_global $HOME/.gitignore_global
-
-substep " - Linking gitconfig"
-rm -f $HOME/.gitconfig
-ln -s $LOCAL_DOTFILES/gitconfig $HOME/.gitconfig
-
-substep " - Linking inputrc"
-rm -f $HOME/.inputrc
-ln -s $LOCAL_DOTFILES/inputrc $HOME/.inputrc
-
-substep " - Linking rspec config"
-rm -f $HOME/.rspec
-ln -s $LOCAL_DOTFILES/rspec $HOME/.rspec
-
-substep " - Linking vim bundles"
-rm -f $HOME/.vimrc.bundles
-ln -s $LOCAL_DOTFILES/vimrc.bundles $HOME/.vimrc.bundles
-
-substep " - Linking vimrc"
-rm -f $HOME/.vimrc
-ln -s $LOCAL_DOTFILES/vimrc $HOME/.vimrc
-
-substep " - Linking ideavimrc"
-rm -f $HOME/.ideavimrc
-ln -s $LOCAL_DOTFILES/ideavimrc $HOME/.ideavimrc
-
-substep " - Linking  zprofile"
-rm -f $HOME/.zshrc
-ln -s $LOCAL_DOTFILES/zshrc $HOME/.zshrc
-ln -s $LOCAL_DOTFILES/zshrc.secret $HOME/.zshrc.secret
-
-substep "Linking directories"
-
-substep " - Linking vim"
-rm -f $HOME/.vim
-ln -s $LOCAL_DOTFILES/vim $HOME/.vim
-
-#-------------------------------------------------------------
-# Vundle
-#-------------------------------------------------------------
-step "Setting up Vundle files"
-if [[ -s "~/.vim/bundle/Vundle.vim" ]]; then
-  substep "Vundle files already installed. Skipping Installation."
+log "Setting zsh as the default shell"
+zsh_path="$(command -v zsh)"
+if [[ "$SHELL" == "$zsh_path" ]]; then
+  info "Already using zsh."
 else
-  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  chsh -s "$zsh_path"
 fi
-substep "Installing Plugins"
-vim +PluginInstall +PluginClean +qall!
 
-#-------------------------------------------------------------
-# YouCompleteMe
-#-------------------------------------------------------------
-# step "Setting up YouCompleteMe"
-# cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer --tern-completer && cd -
-
-#-------------------------------------------------------------
-# End
-#-------------------------------------------------------------
-exec $SHELL -l
-step "Install script complete."
+log "Setup complete. Open a new terminal to load your shell."

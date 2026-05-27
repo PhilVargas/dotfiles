@@ -15,20 +15,19 @@ alias lsf='ls -Ghl'                 # display long in color with humanized file 
 alias lsa='ls -Gah'                 # display all in color with humanized file sizes
 alias lsfa='ls -Gahl'               # display all long in color with humanized file sizes
 alias g='git'
-alias dc='docker-compose'
+alias dc='docker compose'
 
 #-------------------------------------------------------------
 # navigation aliases
 #-------------------------------------------------------------
-alias bash_profile='vim ~/.bash_profile'
+alias zshrc='vim ~/.zshrc'
 alias gitignore_global='vim ~/.gitignore_global'
 alias gitconfig='vim ~/.gitconfig'
 alias vimrc='vim ~/.vimrc'
-alias vundles='vim ~/.vimrc.bundles'
+alias plugins='vim ~/.vimrc.bundles'
 alias dotfiles='cd ~/dotfiles'
 
 #-------------------------------------------------------------
 # editor aliases
 #-------------------------------------------------------------
-# alias vim='rvm system do /usr/local/bin/vim $@'       # open vim with correct version of ruby
-alias vundle="vim +PluginInstall +PluginClean +qall!" # run vundle install
+alias pluginstall="vim +PlugInstall +PlugClean! +qall" # install/clean vim-plug plugins

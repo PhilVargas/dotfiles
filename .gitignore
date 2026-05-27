@@ -1,7 +1,8 @@
-vim/bundle/
-vim/sessions/
-vim/.netrwhist
-gitconfig.secret
-bash_profile.secret
-zshrc.secret
+.DS_Store
+home/vim/plugged/
+home/vim/autoload/plug.vim
+home/vim/sessions/
+home/vim/.netrwhist
+home/zshrc.secret
+home/gitconfig.secret
 .gitconfig.secret
