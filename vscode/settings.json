@@ -183,14 +183,11 @@
   "workbench.activityBar.location": "default",
   "workbench.statusBar.visible": true,
   "editor.minimap.enabled": false,
-  "eslint.packageManager": "yarn",
   "editor.lineNumbers": "on",
-  "eslint.alwaysShowStatus": true,
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "eslint.run": "onSave",
   "editor.guides.highlightActiveIndentation": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "tslint.alwaysShowStatus": true,
   "files.autoSave": "off",
   "cucumberautocomplete.steps": [
     "features/step_definitions/**/*.rb"
@@ -199,23 +196,12 @@
   "cucumberautocomplete.strictGherkinCompletion": true,
   "workbench.editor.focusRecentEditorAfterClose": false,
   "files.exclude": {
-    "**/.classpath": true,
-    "**/.factorypath": true,
-    "**/.git": false,
-    "**/.project": true,
-    "**/.settings": true
+    "**/.git": false
   },
-  "java.errors.incompleteClasspath.severity": "ignore",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "editor.formatOnSaveTimeout": 1500,
-  "python.jediEnabled": false,
-  "python.linting.pylintArgs": [
-    "--load-plugins",
-    "pylint-flask"
-  ],
-  "python.formatting.provider": "black",
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "ruby.format": "rubocop",

@@ -24,8 +24,7 @@ re-link files.
 | `home/`     | Config files symlinked into `$HOME` (`home/zshrc` → `~/.zshrc`). |
 | `shell/`    | Zsh config sourced by `home/zshrc` (env, aliases, prompt).     |
 | `vscode/`   | `settings.json`, symlinked into VSCode's user settings.        |
-| `iterm2/`   | iTerm2 profile + base16 color schemes (imported manually).     |
-| `linters/`  | Project-level linter configs (not symlinked).                  |
+| `iterm2/`   | iTerm2 profile + base16-harmonic16 color scheme (imported manually). |
 
 ## Notes
 
