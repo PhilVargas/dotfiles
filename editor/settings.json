@@ -1,0 +1,374 @@
+{
+    "vim.leader": "<space>",
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "after": [
+                "v",
+                "i",
+                "w"
+            ]
+        },
+        {
+            "before": [
+                "<C-e>"
+            ],
+            "after": [
+                "^"
+            ]
+        },
+        {
+            "before": [
+                "<C-a>"
+            ],
+            "after": [
+                "$"
+            ]
+        },
+        {
+            "before": [
+                "<CR>"
+            ],
+            "after": [
+                "<CR>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "after": [
+                "<C-w>",
+                "k"
+            ]
+        },
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "after": [
+                "<C-w>",
+                "j"
+            ]
+        },
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "after": [
+                "<C-w>",
+                "h"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "after": [
+                "<C-w>",
+                "l"
+            ]
+        },
+        {
+            "before": [
+                "<C-t>"
+            ],
+            "commands": [
+                "editor.action.goToDeclaration"
+            ]
+        },
+        {
+            "before": [
+                "<C-w>",
+                "t"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "m"
+            ],
+            "commands": [
+                ":set relativenumber!"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                "editor.action.addSelectionToNextFindMatch"
+            ]
+        },
+        {
+            "before": [
+                "<C-x>"
+            ],
+            "commands": [
+                "editor.action.moveSelectionToNextFindMatch"
+            ]
+        },
+        {
+            "before": [
+                "<C-o>"
+            ],
+            "commands": [
+                "editor.action.moveSelectionToPreviousFindMatch"
+            ]
+        },
+        {
+            "before": [
+                "a"
+            ],
+            "after": [
+                "<Esc>",
+                "a"
+            ]
+        },
+        {
+            "before": [
+                "i"
+            ],
+            "after": [
+                "<Esc>",
+                "i"
+            ]
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-h>": true,
+        "<C-j>": true,
+        "<C-k>": true,
+        "<C-l>": true,
+        "<C-e>": true,
+        "<C-a>": true,
+        "<C-p>": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "editor.tabSize": 2,
+    "editor.dragAndDrop": false,
+    "editor.scrollBeyondLastLine": false,
+    "editor.showFoldingControls": "always",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "terminal.external.osxExec": "iTerm.app",
+    "emmet.preferences": {
+        "html": {
+            "quote_char": "'"
+        }
+    },
+    "workbench.statusBar.visible": true,
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "on",
+    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "eslint.run": "onSave",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "files.autoSave": "off",
+    "cucumberautocomplete.steps": [
+        "features/step_definitions/**/*.rb"
+    ],
+    "cucumberautocomplete.syncfeatures": "features/**/*.feature",
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "workbench.editor.focusRecentEditorAfterClose": false,
+    "files.exclude": {
+        "**/.git": false
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.formatOnSaveTimeout": 1500,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.renderSideBySide": false,
+    "ruby.format": "rubocop",
+    "ruby.lint": {
+        "rubocop": {
+            "forceExclusion": true
+        }
+    },
+    "python.languageServer": "Default",
+    "files.associations": {
+        "*.txt": "plaintext"
+    },
+    "editor.guides.highlightActiveIndentation": false,
+    "nxConsole.showNodeVersionOnStartup": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "editor.rulers": [
+            120
+        ]
+    },
+    "rubyLsp.enabledFeatures": {
+        "codeActions": true,
+        "diagnostics": true,
+        "documentHighlights": true,
+        "documentLink": true,
+        "documentSymbols": true,
+        "foldingRanges": true,
+        "formatting": true,
+        "hover": true,
+        "inlayHint": true,
+        "onTypeFormatting": true,
+        "selectionRanges": true,
+        "semanticHighlighting": true,
+        "completion": true,
+        "codeLens": true,
+        "definition": true,
+        "workspaceSymbol": true,
+        "signatureHelp": true
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "emmet.includeLanguages": {
+        "html.erb": "html",
+        "erb": "html"
+    },
+    "emmet.showSuggestionsAsSnippets": true,
+    "rubyLsp.rubyVersionManager": {
+        "identifier": "mise"
+    },
+    "auto-close-tag.activationOnLanguage": [
+        "xml",
+        "php",
+        "blade",
+        "ejs",
+        "jinja",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "plaintext",
+        "markdown",
+        "vue",
+        "liquid",
+        "erb",
+        "lang-cfml",
+        "cfml",
+        "HTML (EEx)",
+        "HTML (Eex)",
+        "plist"
+    ],
+    "prisma.showPrismaDataPlatformNotification": false,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.startupEditor": "none",
+    "intelephense.codeLens.implementations.enable": true,
+    "intelephense.stubs": [
+        "apache",
+        "bcmath",
+        "bz2",
+        "calendar",
+        "com_dotnet",
+        "Core",
+        "ctype",
+        "curl",
+        "date",
+        "dba",
+        "dom",
+        "enchant",
+        "exif",
+        "FFI",
+        "fileinfo",
+        "filter",
+        "fpm",
+        "ftp",
+        "gd",
+        "gettext",
+        "gmp",
+        "hash",
+        "iconv",
+        "imap",
+        "intl",
+        "json",
+        "ldap",
+        "libxml",
+        "mbstring",
+        "meta",
+        "mysqli",
+        "oci8",
+        "odbc",
+        "openssl",
+        "pcntl",
+        "pcre",
+        "PDO",
+        "pdo_ibm",
+        "pdo_mysql",
+        "pdo_pgsql",
+        "pdo_sqlite",
+        "pgsql",
+        "Phar",
+        "posix",
+        "pspell",
+        "random",
+        "readline",
+        "Reflection",
+        "session",
+        "shmop",
+        "SimpleXML",
+        "snmp",
+        "soap",
+        "sockets",
+        "sodium",
+        "SPL",
+        "sqlite3",
+        "standard",
+        "superglobals",
+        "sysvmsg",
+        "sysvsem",
+        "sysvshm",
+        "tidy",
+        "tokenizer",
+        "xml",
+        "xmlreader",
+        "xmlrpc",
+        "xmlwriter",
+        "xsl",
+        "Zend OPcache",
+        "zip",
+        "zlib",
+        "wordpress"
+    ],
+    "intelephense.environment.includePaths": [
+        "/Users/philipvargas/Desktop/harrison_metal/mtcopeland/wordpress/stubs/"
+    ],
+    "intelephense.files.maxSize": 10000000,
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+    "intelephense.format.braces": "k&r",
+    "editor.largeFileOptimizations": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "vim.highlightedyank.enable": true,
+    "claudeCode.preferredLocation": "panel",
+    "window.autoDetectColorScheme": false
+}

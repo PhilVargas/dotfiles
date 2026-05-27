@@ -23,7 +23,7 @@ re-link files.
 | `Brewfile`  | Declarative Homebrew packages (`brew bundle`).                 |
 | `home/`     | Config files symlinked into `$HOME` (`home/zshrc` → `~/.zshrc`). |
 | `shell/`    | Zsh config sourced by `home/zshrc` (env, aliases, prompt).     |
-| `vscode/`   | `settings.json`, symlinked into VSCode's user settings.        |
+| `editor/`  | `settings.json`, shared by VSCode and Cursor (symlinked to both). |
 | `iterm2/`   | iTerm2 profile + base16-harmonic16 color scheme (imported manually). |
 
 ## Notes
@@ -60,7 +60,8 @@ iTerm2 and VSCode use their own pickers (they can't read `$THEME` at theme-time)
 
 - **iTerm2:** Settings → Profiles → Colors → *Color Presets* → Import each file in
   [`iterm2/themes/`](iterm2/themes/), then pick one. (Live, instant.)
-- **VSCode:** `Cmd-K Cmd-T`. The Catppuccin and Tokyo Night extensions are
-  installed by `laptop/setup`; default is set to Catppuccin Mocha.
+- **VSCode / Cursor:** `Cmd-K Cmd-T`. The Catppuccin and Tokyo Night extensions
+  are installed by `laptop/setup`; default is Catppuccin Mocha. Both editors
+  share [`editor/settings.json`](editor/settings.json).
 
 Inspired by [jkrmr/dotfiles](https://github.com/jkrmr/dotfiles).

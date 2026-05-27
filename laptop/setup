@@ -92,8 +92,9 @@ dot "tmux"
 dot "config/mise/config.toml"
 
 # Files that don't follow the home/<name> -> ~/.<name> convention.
-link "vscode/settings.json" "Library/Application Support/Code/User/settings.json"
-link "agents/CLAUDE.md"     ".claude/CLAUDE.md"
+link "editor/settings.json" "Library/Application Support/Code/User/settings.json"
+link "editor/settings.json" "Library/Application Support/Cursor/User/settings.json"
+link "agents/CLAUDE.md"      ".claude/CLAUDE.md"
 
 #-------------------------------------------------------------
 # Language runtimes via mise (Ruby & Node)
@@ -123,14 +124,15 @@ info "Installing plugins"
 vim +PlugInstall +PlugClean! +qall
 
 #-------------------------------------------------------------
-# VSCode theme extensions (best-effort; needs the `code` CLI on PATH)
+# Editor theme extensions for VSCode + Cursor (best-effort; needs the CLI)
 #-------------------------------------------------------------
-if command -v code >/dev/null 2>&1; then
-  log "Installing VSCode theme extensions"
+for cli in code cursor; do
+  command -v "$cli" >/dev/null 2>&1 || continue
+  log "Installing $cli theme extensions"
   for ext in catppuccin.catppuccin-vsc enkia.tokyo-night; do
-    code --install-extension "$ext" >/dev/null 2>&1 && info "$ext" || true
+    "$cli" --install-extension "$ext" >/dev/null 2>&1 && info "$ext" || true
   done
-fi
+done
 
 #-------------------------------------------------------------
 # Default shell
