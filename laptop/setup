@@ -88,6 +88,7 @@ dot "tmux.conf"
 dot "vimrc"
 dot "vimrc.bundles"
 dot "vim"
+dot "tmux"
 dot "config/mise/config.toml"
 
 # Files that don't follow the home/<name> -> ~/.<name> convention.
@@ -120,6 +121,16 @@ else
 fi
 info "Installing plugins"
 vim +PlugInstall +PlugClean! +qall
+
+#-------------------------------------------------------------
+# VSCode theme extensions (best-effort; needs the `code` CLI on PATH)
+#-------------------------------------------------------------
+if command -v code >/dev/null 2>&1; then
+  log "Installing VSCode theme extensions"
+  for ext in catppuccin.catppuccin-vsc enkia.tokyo-night; do
+    code --install-extension "$ext" >/dev/null 2>&1 && info "$ext" || true
+  done
+fi
 
 #-------------------------------------------------------------
 # Default shell

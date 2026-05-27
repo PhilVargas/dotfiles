@@ -308,7 +308,23 @@ nnoremap <silent><Leader>m :call NumberToggle()<CR>
 "" COLORS
 syntax on
 set background=dark
-colorscheme base16-default
+if has('termguicolors')
+  set termguicolors
+endif
+
+" Theme is driven by $THEME (set by the shell; default catppuccin-mocha).
+" Switch live with :colorscheme <name>, or persistently via the `theme` shell fn.
+" silent! so a fresh machine (plugins not yet installed) doesn't error on startup
+let s:theme = empty($THEME) ? 'catppuccin-mocha' : $THEME
+if s:theme ==# 'tokyonight-night'
+  let g:tokyonight_style = 'night' | silent! colorscheme tokyonight
+elseif s:theme ==# 'tokyonight-storm'
+  let g:tokyonight_style = 'storm' | silent! colorscheme tokyonight
+elseif s:theme ==# 'catppuccin-macchiato'
+  silent! colorscheme catppuccin_macchiato
+else
+  silent! colorscheme catppuccin_mocha
+endif
 
 "" dont autosave session
 :let g:session_autosave = 'no'

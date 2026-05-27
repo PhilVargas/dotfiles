@@ -11,6 +11,9 @@ source $SHELL_CONFIG/env.sh
 # contains common aliases
 source $SHELL_CONFIG/alias.sh
 
+# terminal theme ($THEME + `theme` switcher)
+source $SHELL_CONFIG/theme.sh
+
 # Load machine specific settings
 [[ -s "$HOME/dotfiles/home/zshrc.secret" ]] && source $HOME/dotfiles/home/zshrc.secret
 

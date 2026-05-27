@@ -43,8 +43,12 @@ Plug 'christoomey/vim-tmux-navigator'
 "" Efficiency
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
-Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
+
+"" Themes (see COLORS section in vimrc; driven by $THEME)
+Plug 'chriskempson/base16-vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'ghifarit53/tokyonight-vim'
 
 Plug 'kana/vim-textobj-user'
 Plug 'tmhedberg/matchit'

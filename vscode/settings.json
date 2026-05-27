@@ -173,7 +173,7 @@
   "editor.showFoldingControls": "always",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "workbench.colorTheme": "Solarized Dark",
+  "workbench.colorTheme": "Catppuccin Mocha",
   "terminal.external.osxExec": "iTerm.app",
   "emmet.preferences": {
     "html": {
