@@ -180,7 +180,7 @@
       "quote_char": "'"
     }
   },
-  "workbench.activityBar.visible": true,
+  "workbench.activityBar.location": "default",
   "workbench.statusBar.visible": true,
   "editor.minimap.enabled": false,
   "eslint.packageManager": "yarn",
@@ -188,7 +188,7 @@
   "eslint.alwaysShowStatus": true,
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "eslint.run": "onSave",
-  "editor.highlightActiveIndentGuide": false,
+  "editor.guides.highlightActiveIndentation": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "tslint.alwaysShowStatus": true,
   "files.autoSave": "off",
@@ -219,11 +219,8 @@
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.renderSideBySide": false,
   "ruby.format": "rubocop",
-  "ruby.intellisense": "rubyLocate",
   "ruby.lint": {
-    "rubocop": {
-      "path": "/Users/philipvargas/.rvm/gems/ruby-2.5.1/wrappers/"
-    }
+    "rubocop": true
   },
   "ruby.useBundler": true,
   "python.languageServer": "Default",
