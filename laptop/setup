@@ -64,6 +64,7 @@ log "Linking dotfiles into place"
 
 # Secret files are gitignored; create an empty one if missing before linking.
 [[ -f "$DOTFILES/home/zshrc.secret" ]] || touch "$DOTFILES/home/zshrc.secret"
+[[ -f "$DOTFILES/home/gitconfig.secret" ]] || touch "$DOTFILES/home/gitconfig.secret"
 
 # link <repo-path> <home-path>: symlink $DOTFILES/<repo-path> -> $HOME/<home-path>
 link() {
@@ -80,6 +81,7 @@ dot() { link "home/$1" ".$1"; }
 dot "zshrc"
 dot "zshrc.secret"
 dot "gitconfig"
+dot "gitconfig.secret"
 dot "gitignore_global"
 dot "inputrc"
 dot "rspec"
