@@ -24,7 +24,7 @@ else
   info "Installing (expect a GUI popup)..."
   xcode-select --install
   info "Press any key once the installation has completed."
-  read -r -n1 -s
+  read -r -n1 -s </dev/tty
 fi
 
 #-------------------------------------------------------------
@@ -58,20 +58,6 @@ log "Installing Homebrew packages from Brewfile"
 brew bundle --file="$DOTFILES/Brewfile"
 
 #-------------------------------------------------------------
-# Language runtimes via mise (Ruby & Node)
-#-------------------------------------------------------------
-log "Installing language runtimes with mise"
-eval "$(mise activate bash)"
-mise use --global ruby@latest
-mise use --global node@lts
-mise install
-info "Enabling corepack (yarn / pnpm)"
-mise exec -- corepack enable
-
-log "Installing global gems"
-mise exec -- gem install bundler rubocop
-
-#-------------------------------------------------------------
 # Symlinks: repo file -> location where the program expects it
 #-------------------------------------------------------------
 log "Linking dotfiles into place"
@@ -98,15 +84,28 @@ dot "gitignore_global"
 dot "inputrc"
 dot "rspec"
 dot "ideavimrc"
-dot "eslintrc"
 dot "tmux.conf"
 dot "vimrc"
 dot "vimrc.bundles"
 dot "vim"
+dot "config/mise/config.toml"
 
 # Files that don't follow the home/<name> -> ~/.<name> convention.
 link "vscode/settings.json" "Library/Application Support/Code/User/settings.json"
 link "agents/CLAUDE.md"     ".claude/CLAUDE.md"
+
+#-------------------------------------------------------------
+# Language runtimes via mise (Ruby & Node)
+#-------------------------------------------------------------
+# Versions are declared in home/config/mise/config.toml (linked above).
+log "Installing language runtimes with mise"
+eval "$(mise activate bash)"
+mise install
+info "Enabling corepack (yarn / pnpm)"
+mise exec -- corepack enable
+
+log "Installing global gems"
+mise exec -- gem install bundler rubocop
 
 #-------------------------------------------------------------
 # Vim plugins (vim-plug)

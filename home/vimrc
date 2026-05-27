@@ -23,18 +23,11 @@ endif
 
 filetype plugin indent on
 
-" summon CtrlP with <space>+p
-let g:ctrlp_map = '<leader>p'
-set runtimepath^=~/.vim/plugged/ctrlp.vim
+" summon fzf file finder with <space>+p
+nnoremap <leader>p :Files<CR>
 if executable('ag')
   " Use Ag over Grep
     set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-   " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
 endif
 
 " set location of help files
@@ -84,13 +77,11 @@ endif
 """ Show EasyBuffer
 nmap <C-B> :EasyBuffer<CR>
 
-""" Syntastic
-let g:syntastic_javascript_checkers = ['eslint']
+""" ALE (linting)
+let g:ale_linters = {'javascript': ['eslint']}
 let g:javascript_plugin_jsdoc = 1
-let g:syntastic_coffeescript_checkers = ['coffeelint']
-
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_check_on_open = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 1
 
 
 """ emmet
@@ -230,9 +221,7 @@ map <Leader>n :NERDTreeToggle<CR>
 """ Open NERDTree at the current file with Space+N
 map <Leader>N :NERDTreeFind<CR>
 
-""" Have NERDTree and CtrlP play nice together
 let g:NERDTreeChDirMode       = 2
-let g:ctrlp_working_path_mode = 'rw'
 
 let NERDTreeShowHidden=0
 
@@ -299,8 +288,6 @@ nnoremap _d :Dash<CR>
 
 "" Git fugitive mapping
 nnoremap ,g :Git
-
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:10,results:10'
 
 "" highlight mapping
 nnoremap <silent><CR> :noh<CR><CR>

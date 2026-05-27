@@ -1,0 +1,5 @@
+# Global mise tool versions. Linked to ~/.config/mise/config.toml by laptop/setup.
+# `mise install` reads this; bump versions here to change them everywhere.
+[tools]
+ruby = "latest"
+node = "lts"

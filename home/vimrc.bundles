@@ -11,10 +11,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'bitc/vim-bad-whitespace'
 Plug 'bling/vim-airline'
 Plug 'godlygeek/tabular'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'rizzatti/dash.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'plasticboy/vim-markdown'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'

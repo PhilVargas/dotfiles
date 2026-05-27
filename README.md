@@ -29,11 +29,17 @@ re-link files.
 
 ## Notes
 
-- **Runtimes:** Ruby and Node are managed by `mise`; `yarn`/`pnpm` come from
-  `corepack`. The setup pins `ruby@latest` and `node@lts` globally.
-- **Vim:** plugins are managed by [vim-plug](https://github.com/junegunn/vim-plug).
-  Edit the list in [`home/vimrc.bundles`](home/vimrc.bundles), then run
-  `:PlugInstall` (or the `pluginstall` shell alias).
+- **Runtimes:** Ruby and Node are managed by `mise`, with versions declared in
+  [`home/config/mise/config.toml`](home/config/mise/config.toml); `yarn`/`pnpm`
+  come from `corepack`. Bump versions there and re-run `mise install`.
+- **Shell:** zsh with `fzf` (Ctrl-R/Ctrl-T), `zsh-autosuggestions`, and
+  `zsh-syntax-highlighting` wired up in [`shell/plugins.sh`](shell/plugins.sh).
+- **Git:** uses `git-delta` as the pager; `push.autoSetupRemote` is on, so new
+  branches push without `--set-upstream`.
+- **Vim:** plugins are managed by [vim-plug](https://github.com/junegunn/vim-plug)
+  (`fzf.vim` for finding, `ALE` for linting). Edit the list in
+  [`home/vimrc.bundles`](home/vimrc.bundles), then run `:PlugInstall` (or the
+  `pluginstall` shell alias).
 - **Secrets:** machine-specific values go in `home/zshrc.secret` (gitignored,
   created automatically on first run).
 

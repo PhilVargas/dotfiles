@@ -9,47 +9,36 @@ BLUE="%{$fg[blue]%}"
 VIOLET="%{$fg[magenta]%}"
 DEFAULT="%{$reset_color%}"
 
-function git_color() {
-  local git_status="$(git status 2> /dev/null)"
+# Build the colored "(branch) " segment from a single `git status` call.
+function git_prompt() {
+  local git_status
+  git_status="$(git status 2> /dev/null)" || return
+
+  local color=$RED
   if [[ $git_status =~ "working directory clean" || $git_status =~ "working tree clean" ]]; then
     if [[ $git_status =~ "Your branch is ahead of" ]]; then
-      echo -ne $YELLOW
+      color=$YELLOW
     else
-      echo -ne $GREEN
+      color=$GREEN
     fi
   elif [[ $git_status =~ "Unmerged" ]]; then
-    echo -ne $VIOLET
-  else
-    echo -ne $RED
+    color=$VIOLET
   fi
-}
 
-function parse_git_branch {
- ref=$(git symbolic-ref HEAD 2> /dev/null) || return
- echo "(${ref#refs/heads/})"
-}
-
-function git_branch() {
-  local git_status="$(git status 2> /dev/null)"
-  local is_on_branch='^On branch ([^[:space:]]+)'
-  local is_on_commit='HEAD detached at ([^[:space:]]+)'
-  local is_rebasing="rebasing branch '([^[:space:]]+)' on '([^[:space:]]+)'"
-
-  if [[ $git_status =~ $is_on_branch ]]; then
-    local branch=${match[1]}
-    git_color && echo -n "($branch) "
-  elif [[ $git_status =~ $is_on_commit ]]; then
-    local commit=${match[1]}
-    git_color && echo -n "($commit) "
-  elif [[ $git_status =~ $is_rebasing ]]; then
-    local branch=${match[1]}
-    local commit=${match[2]}
-    git_color && echo -n "rebasing $branch on $commit "
+  local label=""
+  if [[ $git_status =~ 'On branch ([^[:space:]]+)' ]]; then
+    label="(${match[1]}) "
+  elif [[ $git_status =~ 'HEAD detached at ([^[:space:]]+)' ]]; then
+    label="(${match[1]}) "
+  elif [[ $git_status =~ "rebasing branch '([^']+)' on '([^']+)'" ]]; then
+    label="rebasing ${match[1]} on ${match[2]} "
   fi
+
+  echo -ne "${color}${label}"
 }
 
 PS1="%{$YELLOW%}%n "      # username of current user
 PS1+="%{$BLUE%}%~ "       # basename of the CWD
-PS1+="\$(git_branch)"     # colored git branch
+PS1+="\$(git_prompt)"     # colored git branch
 PS1+="%{$DEFAULT%}%# "    # restore default text color and add prompt symbol
 export PS1

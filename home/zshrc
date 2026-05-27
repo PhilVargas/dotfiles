@@ -16,3 +16,6 @@ source $SHELL_CONFIG/git-completion.sh
 
 # Load machine specific settings
 [[ -s "$HOME/dotfiles/home/zshrc.secret" ]] && source $HOME/dotfiles/home/zshrc.secret
+
+# Interactive plugins (fzf, autosuggestions, syntax-highlighting) — load last
+source $SHELL_CONFIG/plugins.sh

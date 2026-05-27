@@ -1,18 +1,32 @@
 [color]
   ui            = true
+[init]
+  defaultBranch = main
 [core]
   editor        = vim
   excludesfile  = ~/.gitignore_global
+  pager         = delta
 [interactive]
   singlekey     = true
+  diffFilter    = delta --color-only
+[delta]
+  navigate      = true
+  line-numbers  = true
 [log]
   date          = short
 [push]
-  default       = simple
+  default          = simple
+  autoSetupRemote  = true
+[fetch]
+  prune         = true
+[branch]
+  sort          = -committerdate
 [pull]
   rebase        = true
+[rebase]
+  autostash     = true
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
   ff            = only
   prompt        = false
   tool          = vimdiff
