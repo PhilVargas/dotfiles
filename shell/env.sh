@@ -29,4 +29,9 @@ export LSCOLORS=exGxFxdxCxDxDxaccxaeex
 # Zsh configuration
 #-------------------------------------------------------------
 setopt NO_CASE_GLOB
+
+# Initialize the completion system (required for the matcher-list below to work)
+autoload -Uz compinit && compinit
+
+# Case-insensitive tab completion (cd, etc.)
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
