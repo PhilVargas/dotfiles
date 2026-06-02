@@ -71,5 +71,6 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - Follow the Conventional Commits spec when tasked with creating a commit.
 - Do not attach a "Co-authored by Claude" message to the commit.
 - When finished, always display the commit message after you have made the commit.
+- Never make git commits without explicit instruction to do so
 
 ---
